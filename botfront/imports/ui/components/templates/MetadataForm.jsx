@@ -6,6 +6,8 @@ import {
 import ToggleField from '../common/ToggleField';
 import SelectField from '../form_fields/SelectField';
 
+import i18n from 'meteor/universe:i18n';
+
 
 // force open affect force close and vice versa
 export class AutoFormMetadata extends AutoForm {
@@ -42,30 +44,30 @@ export const defaultModel = {
 
 export const schemaData = {
     linkTarget: {
-        label: 'Where should the links open?',
+        label: i18n.__('where_open_link'),
         defaultValue: '_blank',
         allowedValues: ['_blank', '_self'],
         options: [
-            { text: 'In the current tab', value: '_self' },
-            { text: 'In a new tab', value: '_blank' },
+            { text: i18n.__('in_current_Tab'), value: '_self' },
+            { text: i18n.__('in_new_tab'), value: '_blank' },
         ],
     },
     userInput: {
-        label: 'How should the user input field be rendered?',
+        label: i18n.__('how_to_render_input_field'),
         defaultValue: 'show',
         allowedValues: ['show', 'hide', 'disable'],
         options: [
-            { text: 'Show', value: 'show' },
-            { text: 'Hide', value: 'hide' },
-            { text: 'Disable', value: 'disable' },
+            { text: i18n.__('show'), value: 'show' },
+            { text: i18n.__('hide'), value: 'hide' },
+            { text: i18n.__('disable'), value: 'disable' },
         ],
     },
     forceOpen: {
-        label: 'Force the chat widget to open? (The message will appear as a tooltip if the widget is closed)',
+        label: i18n.__('force_chat_widget_open'),
         defaultValue: false,
     },
     forceClose: {
-        label: 'Force the chat widget to close? (The message will appear as a tooltip)',
+        label: i18n.__('force_chat_widget_close'),
         defaultValue: false,
     },
 };

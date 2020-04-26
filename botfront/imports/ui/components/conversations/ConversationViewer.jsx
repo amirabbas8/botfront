@@ -12,6 +12,9 @@ import { MARK_READ } from './mutations';
 import ConversationJsonViewer from './ConversationJsonViewer';
 import ConversationDialogueViewer from './ConversationDialogueViewer';
 
+import i18n from 'meteor/universe:i18n';
+
+
 function ConversationViewer (props) {
     const [active, setActive] = useState('Text');
     const {
@@ -87,7 +90,7 @@ function ConversationViewer (props) {
 
     useEffect(() => {
         if (data && !data.markAsRead.success) {
-            Alert.warning('Something went wrong, the conversation was not marked as read', {
+            Alert.warning(i18n.__('error_in_conversation_read'), {
                 position: 'top-right',
                 timeout: 5000,
             });

@@ -7,6 +7,8 @@ import IconButton from '../../common/IconButton';
 import DashedButton from './DashedButton';
 import { ProjectContext } from '../../../layouts/context';
 
+import i18n from 'meteor/universe:i18n';
+
 const PayloadEditor = (props) => {
     const {
         entities: availableEntities,
@@ -125,7 +127,7 @@ const PayloadEditor = (props) => {
                         }
                     >
                         <Icon name='plus' />
-                        Add entity
+                        {i18n.__('add_entity')}
                     </DashedButton>
                 </div>
             ) : (

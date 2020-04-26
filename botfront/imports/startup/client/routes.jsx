@@ -32,6 +32,8 @@ import Project from '../../ui/layouts/project';
 import Index from '../../ui/components/index';
 import store from '../../ui/store/store';
 
+import i18n from 'meteor/universe:i18n';
+
 const authenticateProject = (nextState, replace, callback) => {
     Tracker.autorun(() => {
         if (areScopeReady()) {
@@ -82,7 +84,7 @@ const validateCanSetup = () => (nextState, replace, callback) => {
 
 Meteor.startup(() => {
     render(
-        <DocumentTitle title='Botfront.'>
+        <DocumentTitle title={i18n.__('app_name')}>
             <ApolloProvider client={apolloClient}>
                 <ApolloHooksProvider client={apolloClient}>
                     <Provider store={store}>

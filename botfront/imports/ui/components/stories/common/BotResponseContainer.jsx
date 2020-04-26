@@ -5,6 +5,8 @@ import { Input, Button, Image } from 'semantic-ui-react';
 import TextareaAutosize from 'react-autosize-textarea';
 import QuickReplies from './QuickReplies';
 
+import i18n from 'meteor/universe:i18n';
+
 const BotResponseContainer = (props) => {
     const {
         value, onDelete, onChange, focus, onFocus, editCustom, tag, hasMetadata,
@@ -77,7 +79,7 @@ const BotResponseContainer = (props) => {
     const renderText = () => (
         <TextareaAutosize
             ref={focusGrabber}
-            placeholder='Type a message'
+            placeholder={i18n.__('type_a_message')}
             role='button'
             tabIndex={0}
             value={input}
@@ -101,7 +103,7 @@ const BotResponseContainer = (props) => {
     );
 
     const renderViewImage = () => (
-        <Image src={value.image} size='small' alt='Image URL broken' />
+        <Image src={value.image} size='small' alt={i18n.__('broken_img_url')} />
     );
 
     const renderSetImage = () => (

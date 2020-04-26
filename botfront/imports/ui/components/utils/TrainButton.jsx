@@ -9,6 +9,8 @@ import 'react-s-alert/dist/s-alert-default.css';
 import { isTraining } from '../../../api/nlu_model/nlu_model.utils';
 import { StoryGroups } from '../../../api/storyGroups/storyGroups.collection';
 
+import i18n from 'meteor/universe:i18n';
+
 
 class TrainButton extends React.Component {
     train = () => {
@@ -16,7 +18,7 @@ class TrainButton extends React.Component {
         Meteor.call('project.markTrainingStarted', projectId);
         Meteor.call('rasa.train', projectId, instance, (err) => {
             if (err) {
-                Alert.error(`Training failed: ${JSON.stringify(err.reason)}`, {
+                Alert.error(i18n.__('train_failed', [JSON.stringify(err.reason)]), {
                     position: 'top-right',
                     timeout: 'none',
                 });
@@ -29,7 +31,7 @@ class TrainButton extends React.Component {
             <Button
                 color='blue'
                 icon='grid layout'
-                content='Train everything'
+                content={i18n.__('train_everything')}
                 labelPosition='left'
                 disabled={isTraining(project) || !instance}
                 loading={isTraining(project)}
@@ -38,28 +40,28 @@ class TrainButton extends React.Component {
                 data-cy='train-button'
             />
         ) : (
-            <Popup
-                content={popupContent}
-                trigger={
-                    (
-                        <Button
-                            color='yellow'
-                            icon='eye'
-                            content='Partial training'
-                            labelPosition='left'
-                            disabled={isTraining(project) || !instance}
-                            loading={isTraining(project)}
-                            onClick={this.train}
-                            data-cy='train-button'
-                        />
-                    )
-                }
-                // Popup is disabled while training
-                disabled={project.training && project.training.status === 'training'}
-                inverted
-                size='tiny'
-            />
-        )
+                <Popup
+                    content={popupContent}
+                    trigger={
+                        (
+                            <Button
+                                color='yellow'
+                                icon='eye'
+                                content={i18n.__('partial_training')}
+                                labelPosition='left'
+                                disabled={isTraining(project) || !instance}
+                                loading={isTraining(project)}
+                                onClick={this.train}
+                                data-cy='train-button'
+                            />
+                        )
+                    }
+                    // Popup is disabled while training
+                    disabled={project.training && project.training.status === 'training'}
+                    inverted
+                    size='tiny'
+                />
+            )
     );
 
     render() {
@@ -98,10 +100,10 @@ export default withTracker((props) => {
         storyGroups = StoryGroups.find({ projectId }, { field: { _id: 1 } }).fetch();
         selectedStoryGroups = storyGroups.filter(storyGroup => (storyGroup.selected));
 
-        if (selectedStoryGroups && selectedStoryGroups.length > 1) popupContent = `Train NLU and stories from ${selectedStoryGroups.length} focused story groups.`;
-        else if (selectedStoryGroups && selectedStoryGroups.length === 1) popupContent = 'Train NLU and stories from 1 focused story group.';
+        if (selectedStoryGroups && selectedStoryGroups.length > 1) popupContent = i18n.__('train_nlu_from_focused_group', [selectedStoryGroups.length]);
+        else if (selectedStoryGroups && selectedStoryGroups.length === 1) popupContent = i18n.__('train_nlu_from_focused_group', ['1']);
     }
-    
+
     return {
         ready,
         popupContent,

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Popup } from 'semantic-ui-react';
 
+import i18n from 'meteor/universe:i18n';
+
 const BadLineLabel = (props) => {
     const { lineMd, lineIndex } = props;
     return (
@@ -15,8 +17,8 @@ const BadLineLabel = (props) => {
                     </div>
                 </div>
             )}
-            header={`Bad line on line ${lineIndex}`}
-            content={<p>please fix this line in markdown.</p>}
+            header={i18n.__('bad_line',[lineIndex])}
+            content={<p>{i18n.__('fix_bad_line')}</p>}
         />
     );
 };

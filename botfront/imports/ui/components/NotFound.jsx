@@ -7,7 +7,7 @@ export default class NotFound extends React.Component {
         return (
             <Container textAlign="center">
                 <Header as="h1" >
-                    Not Found
+                    {i18n.__('Not Found')}
                 </Header>
 
             </Container>

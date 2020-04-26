@@ -9,6 +9,8 @@ import { ConversationOptionsContext } from '../Context';
 import { ProjectContext } from '../../../layouts/context';
 import { slotValueToLabel } from '../SlotLabel';
 
+import i18n from 'meteor/universe:i18n';
+
 const SlotPopupContent = (props) => {
     const {
         value: active, onSelect, trigger, trackOpenMenu,
@@ -32,11 +34,11 @@ const SlotPopupContent = (props) => {
                 onClose={() => setPopupOpen(false)}
             >
                 <p>
-                    Go to the <strong>Slot</strong> tab to create your first
+                Go to the <strong>Slot</strong> tab to create your first
                     slot!
                 </p>
                 <div>
-                    <Button fluid color='orange' content='Go to slots' onClick={browseToSlots} />
+                    <Button fluid color='orange' content={i18n.__('go_to_slots')} onClick={browseToSlots} />
                 </div>
             </Popup>
         );

@@ -9,6 +9,8 @@ import StepProject from './StepProject';
 import StepConsent from './StepConsent';
 import { wrapMeteorCallback } from '../utils/Errors';
 
+import i18n from 'meteor/universe:i18n';
+
 class SetupSteps extends React.Component {
     constructor(props) {
         super(props);
@@ -64,8 +66,7 @@ class SetupSteps extends React.Component {
                                     pathname: '/admin/projects',
                                     state: {
                                         error:
-                                            'Something went wrong with project creation,'
-                                            + ' redirecting you to the project selection screen',
+                                        i18n.__('error_create_project'),
                                     },
                                 });
                             });
@@ -96,14 +97,14 @@ class SetupSteps extends React.Component {
                     <Step.Group fluid ordered size='large'>
                         <Step
                             active={activeStep === 'account'}
-                            title='Your account'
+                            title={i18n.__('your_account')}
                             completed={activeStep !== 'account'}
                             onClick={this.handleAccountClick}
                             data-cy='account-step'
                         />
                         <Step
                             active={activeStep === 'project'}
-                            title='Your first project'
+                            title={i18n.__('your_first_project')}
                             completed={activeStep === 'consent'}
                             onClick={
                                 activeStep === 'consent'
@@ -114,7 +115,7 @@ class SetupSteps extends React.Component {
                         />
                         <Step
                             active={activeStep === 'consent'}
-                            title='Updates'
+                            title={i18n.__('updates')}
                             data-cy='consent-step'
                         />
                     </Step.Group>

@@ -7,6 +7,8 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SelectField from '../nlu/common/SelectLanguage';
 import { newProjectSchema } from '../../../api/setup';
 
+import i18n from 'meteor/universe:i18n';
+
 // eslint-disable-next-line react/prefer-stateless-function
 class StepProjectComponent extends React.Component {
     render() {
@@ -22,19 +24,19 @@ class StepProjectComponent extends React.Component {
                 <br />
                 <HiddenField
                     name='project'
-                    value='My Project'
+                    value={i18n.__('my_project')}
                 />
                 <SelectField
                     label={null}
                     name='language'
-                    placeholder='Select the default language of your project'
+                    placeholder={i18n.__('select_lang_project')}
                 />
                 <br />
                 <ErrorsField />
                 <div style={{ textAlign: 'center' }}>
                     <SubmitField
                         data-cy='project-create-button'
-                        value='Continue'
+                        value={i18n.__('continues')}
                         className='primary'
                     />
                 </div>

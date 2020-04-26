@@ -6,6 +6,8 @@ import React from 'react';
 import ConfirmPopup from '../common/ConfirmPopup';
 import ToolTipPopup from '../common/ToolTipPopup';
 
+import i18n from 'meteor/universe:i18n';
+
 class BranchTabLabel extends React.Component {
     constructor(props) {
         super(props);
@@ -175,9 +177,9 @@ class BranchTabLabel extends React.Component {
         if (isLinked) {
             return (
                 <ToolTipPopup
-                    header='This story cannot be deleted'
+                    header={i18n.__('story_cannot_be_deleted')}
                     toolTipText={[
-                        'A story that is linked to another story cannot be deleted',
+                        i18n.__('linked_story_cannot_be_deleted') ,
                     ]}
                     trigger={this.renderDeleteButton()}
                 />
@@ -186,9 +188,9 @@ class BranchTabLabel extends React.Component {
         if (siblings.length < 3 && isParentLinked) {
             return (
                 <ToolTipPopup
-                    header='This story cannot be deleted'
+                    header={i18n.__('story_cannot_be_deleted')}
                     toolTipText={[
-                        'A story that has a only one sibling branch which is linked cannot be deleted',
+                        i18n.__('sibling_story_cannot_be_deleted'),
                     ]}
                     trigger={this.renderDeleteButton()}
                 />
@@ -199,7 +201,7 @@ class BranchTabLabel extends React.Component {
                 trigger={this.renderDeleteButton()}
                 content={(
                     <ConfirmPopup
-                        title='Delete branch?'
+                        title={i18n.__('delete_branch')}
                         {...confirmMessage}
                         onYes={() => {
                             this.setState({ deletePopupOpened: false });

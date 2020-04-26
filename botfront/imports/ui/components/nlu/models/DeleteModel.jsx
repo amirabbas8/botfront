@@ -9,6 +9,9 @@ import { saveAs } from 'file-saver';
 import moment from 'moment';
 import { getTrainingDataInRasaFormat } from '../../../../api/instances/instances.methods';
 
+import i18n from 'meteor/universe:i18n';
+
+
 export default class DeleteModel extends React.Component {
     constructor(props) {
         super(props);
@@ -49,9 +52,9 @@ export default class DeleteModel extends React.Component {
         if (!cannotDelete) {
             return (
                 <Message
-                    header='Default language cannot be deleted'
+                    header={i18n.__('cant_delete_default_lang_header')}
                     icon='warning'
-                    content={'You can\'t delete the default language, to delete this language change the default language of the project.'}
+                    content={i18n.__('cant_delete_default_lang_content')}
                     warning
                 />
             );
@@ -59,13 +62,13 @@ export default class DeleteModel extends React.Component {
         return (
             <Message
                 negative
-                header={`All the ${language} data of your model will be deleted !`}
+                header={i18n.__('delete_of_a_model_lang_data', [language])}
                 icon='warning circle'
-                content='Please use the button below to download a backup of your data before proceeding.'
+                content={i18n.__('download_backup_before_proceding')}
             />
         );
     }
-    
+
 
     render() {
         const { backupDownloaded, confirmOpen } = this.state;
@@ -74,8 +77,8 @@ export default class DeleteModel extends React.Component {
             <Tab.Pane>
                 <Confirm
                     open={confirmOpen}
-                    header={`Delete ${language} data from your model? (${model.training_data.common_examples.length} examples)`}
-                    content='This cannot be undone!'
+                    header={i18n.__('ask_delete_of_a_model_lang_data', [language, model.training_data.common_examples.length])}
+                    content={i18n.__('cant_undone')}
                     onCancel={this.onCancel}
                     onConfirm={this.onConfirm}
                 />

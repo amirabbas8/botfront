@@ -9,6 +9,8 @@ import { ProjectContext } from '../../../layouts/context';
 import UtteranceInput from '../../utils/UtteranceInput';
 import NluEditor from './nlu_editor/NluEditor';
 
+import i18n from 'meteor/universe:i18n';
+
 
 const UtteranceContainer = (props) => {
     const {
@@ -73,7 +75,7 @@ const UtteranceContainer = (props) => {
             if (!stateValue) {
                 return (
                     <UtteranceInput
-                        placeholder='User says...'
+                        placeholder={i18n.__('user_say')}
                         fluid
                         value={input}
                         onChange={u => setInput(u)}
@@ -92,7 +94,7 @@ const UtteranceContainer = (props) => {
                         primary
                         onClick={saveInput}
                         disabled={stateValue.intent === OOS_LABEL}
-                        content='Save'
+                        content={i18n.__('save')}
                         size='small'
                         data-cy='save-new-user-input'
                     />

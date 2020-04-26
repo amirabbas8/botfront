@@ -47,6 +47,7 @@ if (Meteor.isClient) {
             Projects.attachSchema(ProjectsSchema);
         }
     });
+    i18n.setLocale("fa");
 }
 
 

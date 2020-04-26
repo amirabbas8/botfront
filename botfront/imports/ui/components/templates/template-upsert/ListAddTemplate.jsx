@@ -6,15 +6,16 @@ import yamljs from 'js-yaml';
 import cloneDeep from 'lodash/cloneDeep';
 import { examples } from './templateExamples';
 
+import i18n from 'meteor/universe:i18n';
 
 const messageTypesOptions = [
-    { value: 0, text: 'Text' },
-    { value: 1, text: 'Text with buttons (quick replies)' },
-    { value: 2, text: 'Image' },
-    { value: 3, text: 'Button template' },
-    { value: 4, text: 'Generic template' },
-    { value: 5, text: 'List template' },
-    { value: 6, text: 'Messenger Handoff' },
+    { value: 0, text: i18n.__('Text') },
+    { value: 1, text: i18n.__('Text with buttons (quick replies)') },
+    { value: 2, text: i18n.__('Image') },
+    { value: 3, text: i18n.__('Button template') },
+    { value: 4, text: i18n.__('Generic template') },
+    { value: 5, text: i18n.__('List template') },
+    { value: 6, text: i18n.__('Messenger Handoff') },
     // { value: 6, text: 'Carousel (deprecated)' },
 ];
 
@@ -57,7 +58,7 @@ const ListAddTemplate = ({
                 className={`icon ${indexClassName} sequence-add-message`}
             >
                 <Dropdown.Menu>
-                    <Dropdown.Header content='Choose a message template' className='sequence-add-message-menu-header' />
+                    <Dropdown.Header content={i18n.__('Choose a message template')} className='sequence-add-message-menu-header' />
                     {messageTypesOptions.map(option => <Dropdown.Item key={option.value} onClick={handleChange} {...option} />)}
                 </Dropdown.Menu>
             </Dropdown>

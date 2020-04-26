@@ -7,6 +7,9 @@ import {
 import IntentLabel from '../common/IntentLabel';
 import SaveButton from '../../utils/SaveButton';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class IntentBulkInsert extends React.Component {
     static getInitialState() {
         return {
@@ -81,7 +84,7 @@ class IntentBulkInsert extends React.Component {
                         disabled={saving}
                         onChange={this.onTextChanged}
                     />
-                    <Message info content='Select an existing intent or type to create a new one' />
+                    <Message info content={i18n.__('select_or_create_intent')} />
                     <div className='side-by-side'>
                         <IntentLabel
                             value={intent}

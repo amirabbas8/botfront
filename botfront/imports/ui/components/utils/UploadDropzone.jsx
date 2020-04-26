@@ -1,6 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { NativeTypes } from 'react-dnd-html5-backend-cjs';
 import { useDrop } from 'react-dnd-cjs';
+
+import i18n from 'meteor/universe:i18n';
+
 import {
     Message, Icon, Button, Segment,
 } from 'semantic-ui-react';
@@ -30,10 +33,10 @@ export default function UploadDropzone(props) {
             rejectedFiles = [];
         }
 
-        if (!acceptedFiles.length && !rejectedFiles.length) return handleError('Sorry, could not read you file');
-        if (rejectedFiles.length) return handleError(`${rejectedFiles[0].name} is not of type: ${accept}`);
-        if (acceptedFiles.length > 1) return handleError('Please upload only one file');
-        if (acceptedFiles[0].size > maxSizeInMb * 1000000) return handleError(`Your file should not exceed ${maxSizeInMb}Mb.`);
+        if (!acceptedFiles.length && !rejectedFiles.length) return handleError(i18n.__('cant_read_file'));
+        if (rejectedFiles.length) return handleError(i18n.__('file_type_error', [rejectedFiles[0].name, accept]));
+        if (acceptedFiles.length > 1) return handleError(i18n.__('error_upload_multy_file'));
+        if (acceptedFiles[0].size > maxSizeInMb * 1000000) return handleError(i18n.__(error_huge_file, [maxSizeInMb]));
 
         const file = acceptedFiles[0];
 
@@ -47,8 +50,8 @@ export default function UploadDropzone(props) {
             }
         };
 
-        reader.onabort = () => handleError('file reading was aborted');
-        reader.onerror = () => handleError('file reading has failed');
+        reader.onabort = () => handleError(i18n.__('error_file_reading_aborted'));
+        reader.onerror = () => handleError(i18n.__('error_file_reading_faild'));
         return binary ? reader.readAsBinaryString(file) : reader.readAsText(file);
     };
 
@@ -84,13 +87,13 @@ export default function UploadDropzone(props) {
                     </div>
                 </Segment>
             ) : (
-                <Message
-                    positive
-                    header='Success!'
-                    icon='check circle'
-                    content={successMessage}
-                />
-            )}
+                    <Message
+                        positive
+                        header='Success!'
+                        icon='check circle'
+                        content={successMessage}
+                    />
+                )}
         </Loading>
     );
 }
@@ -107,7 +110,7 @@ UploadDropzone.propTypes = {
 };
 
 UploadDropzone.defaultProps = {
-    successMessage: 'Your file is ready',
+    successMessage: i18n.__('file_is_ready'),
     success: false,
     loading: false,
     binary: true,

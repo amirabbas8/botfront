@@ -2,6 +2,8 @@ import React from 'react';
 import { Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
+import i18n from 'meteor/universe:i18n';
+
 function UtteranceInput({
     placeholder, size, value, onValidate, fluid, onChange, excludedTargets, onDelete,
 }) {
@@ -58,10 +60,10 @@ UtteranceInput.propTypes = {
 };
 
 UtteranceInput.defaultProps = {
-    placeholder: 'Say....',
+    placeholder: i18n.__('say'),
     size: 'small',
     value: '',
-    onValidate: () => {},
+    onValidate: () => { },
     fluid: false,
     excludedTargets: ['trash'],
 };

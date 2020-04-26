@@ -17,6 +17,9 @@ import IconButton from '../../common/IconButton';
 import UserUtteranceViewer from '../common/UserUtteranceViewer';
 import { ExampleTextEditor } from '../../example_editor/ExampleTextEditor';
 
+import i18n from 'meteor/universe:i18n';
+
+
 export default class NluDataTable extends React.Component {
     constructor(props) {
         super(props);
@@ -48,7 +51,7 @@ export default class NluDataTable extends React.Component {
     }
 
     getIntentForDropdown(all) {
-        const intentSelection = all ? [{ text: 'ALL', value: null }] : [];
+        const intentSelection = all ? [{ text: i18n.__('all'), value: null }] : [];
         const { intents } = this.props;
         intents.forEach((i) => {
             intentSelection.push({
@@ -163,7 +166,7 @@ export default class NluDataTable extends React.Component {
         ];
 
         firstColumns = intentColumns.concat(firstColumns.concat(extraColumns || []));
-        
+
         firstColumns.push({
             accessor: '_id',
             filterable: false,
@@ -178,13 +181,13 @@ export default class NluDataTable extends React.Component {
                         <>
                             <Popup.Header>Canonical Example</Popup.Header>
                             <Popup.Content className='popup-canonical'>
-                                This example is canonical for the intent
+                                {i18n.__('canonial_example_first')}
                                 <span className='intent-name'> {props.row.example.intent}</span>
 
                                 {props.row.example.entities && props.row.example.entities.length > 0
                                     ? (
                                         <>
-                                            and for the following entity - entity value combinations: <br />
+                                            {i18n.__('canonial_example_second')}<br />
                                             {props.row.example.entities.map(entity => (
                                                 <span><strong style={{ color: getColor(entity.entity).backgroundColor }}>{entity.entity}</strong>: {entity.value}</span>
                                             ))}
@@ -208,7 +211,7 @@ export default class NluDataTable extends React.Component {
                                     basic
                                     disabled={toolTip === null}
                                     onClick={async () => {
-                                    // need to recreate a set since state do not detect update through mutations
+                                        // need to recreate a set since state do not detect update through mutations
                                         this.setState({ waiting: new Set(waiting.add(props.row.example._id)) });
                                         const result = await onSwitchCanonical(props.row.example);
                                         if (result.change) {
@@ -259,7 +262,7 @@ export default class NluDataTable extends React.Component {
                             </div>
                         )}
                         inverted
-                        content='Cannot delete a canonical example'
+                        content={i18n.__('cant_delete_canonical_example')}
                     />
                 );
             },
@@ -276,7 +279,7 @@ export default class NluDataTable extends React.Component {
             <Popup
                 trigger={<div>{jsx}</div>}
                 inverted
-                content='Cannot edit a canonical example'
+                content={i18n.__('cant_edit_canonical_example')}
             />
         );
     }
@@ -342,11 +345,11 @@ export default class NluDataTable extends React.Component {
                                     trigger={
                                         <Icon name='gem' color={onlyCanonical ? 'black' : 'grey'} />
                                     }
-                                    content='Only show canonicals examples'
+                                    content={i18n.__('only_show_canonical_examples')}
                                     position='top center'
                                     inverted
                                 />
-                                
+
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>

@@ -32,7 +32,9 @@ import {
     UPSERT_BOT_RESPONSE,
 } from './graphql';
 import apolloClient from '../../startup/client/apollo';
+import i18n from 'meteor/universe:i18n';
 
+const T = i18n.createComponent();
 
 const ProjectChat = React.lazy(() => import('../components/project/ProjectChat'));
 
@@ -290,10 +292,10 @@ class Project extends React.Component {
                 {showIntercom && !loading && <Intercom appID={intercomId} {...this.getIntercomUser()} />}
                 <div className='project-sidebar'>
                     <Header as='h1' className='logo'>
-                        Botfront.
+                        <T>app_name</T>
                     </Header>
                     <Header as='h1' className='simple-logo'>
-                        B.
+                    <T>app_name_char</T>
                     </Header>
                     {loading && this.renderPlaceholder(true, false)}
                     {!loading && (
@@ -353,7 +355,7 @@ class Project extends React.Component {
                                                 trigger={
                                                     <Button size='big' circular onClick={() => changeShowChat(!showChat)} icon='comment' primary className='open-chat-button' data-cy='open-chat' />
                                                 }
-                                                content='Try out your chatbot'
+                                                content={i18n.__('Try out your chatbot')}
                                             />
                                         )}
                                     </div>

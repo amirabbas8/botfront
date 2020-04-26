@@ -2,6 +2,8 @@ import { Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import i18n from 'meteor/universe:i18n';
+
 class StoryErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
@@ -23,8 +25,8 @@ class StoryErrorBoundary extends React.Component {
                 <div className='story-error-wrapper'>
                     <Message
                         icon='warning'
-                        header='Sorry, something went wrong with the story'
-                        content='Please try to refresh the page, if the problem persists, try editing the story in text mode.'
+                        header={i18n.__('something_wrong_with_story')}
+                        content={i18n.__('refresh_the_page')}
                         negative
                     />
                 </div>

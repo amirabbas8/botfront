@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Input, Dropdown } from 'semantic-ui-react';
 import getColor from '../../../../lib/getColors';
 
+import i18n from 'meteor/universe:i18n';
+
+
 export default class Filters extends React.Component {
     getIntentsOptions = () => {
         const { intents } = this.props;
@@ -41,7 +44,7 @@ export default class Filters extends React.Component {
                 {intents.length > 0 && (
                     <Dropdown
                         style={{ marginRight: '10px' }}
-                        placeholder='Filter by intents'
+                        placeholder={i18n.__('filter_by_intent')}
                         size='tiny'
                         onChange={this.handleIntentSelectorChange}
                         multiple
@@ -55,7 +58,7 @@ export default class Filters extends React.Component {
                 {entities.length > 0 && (
                     <Dropdown
                         style={{ marginRight: '10px' }}
-                        placeholder='Filter by entities'
+                        placeholder={i18n.__('filter_by_entity')}
                         size='tiny'
                         onChange={this.handleEntitiesSelectorChange}
                         value={entitiesFilter}
@@ -67,7 +70,7 @@ export default class Filters extends React.Component {
                     />
                 )}
 
-                <Input icon='search' placeholder='Search...' onChange={this.handleTextChange} value={query} />
+                <Input icon='search' placeholder={i18n.__('search')} onChange={this.handleTextChange} value={query} />
             </div>
         );
     }

@@ -15,6 +15,9 @@ import ConversationViewer from './ConversationViewer';
 import { Loading } from '../utils/Utils';
 import { updateIncomingPath } from '../incoming/incoming.utils';
 
+import i18n from 'meteor/universe:i18n';
+
+
 
 function ConversationsBrowser(props) {
     const {
@@ -31,7 +34,7 @@ function ConversationsBrowser(props) {
 
     useEffect(() => {
         if (data && !data.delete.success) {
-            Alert.warning('Something went wrong, the conversation was not deleted', {
+            Alert.warning(i18n.__('error_in_conversation_delete'), {
                 position: 'top-right',
                 timeout: 5000,
             });
@@ -57,7 +60,7 @@ function ConversationsBrowser(props) {
 
         return '';
     }
-    
+
     const goToConversation = (newPage, conversationId, replace = false) => {
         // let url = `/project/${projectId}/incoming/${modelId}/conversations/${page || 1}`;
         const url = updateIncomingPath({ ...router.params, page: newPage || 1, selected_id: conversationId });
@@ -144,8 +147,8 @@ function ConversationsBrowser(props) {
                     </Grid.Column>
                 </Grid>
             ) : (
-                <Message data-cy='no-conv' info>No conversation to load</Message>
-            )}
+                    <Message data-cy='no-conv' info>{i18n.__()}No conversation to load</Message>
+                )}
         </div>
     );
 }

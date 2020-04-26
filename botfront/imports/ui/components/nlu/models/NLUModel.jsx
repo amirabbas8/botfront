@@ -44,6 +44,8 @@ import { extractEntities } from './nluModel.utils';
 import { setWorkingLanguage } from '../../../store/actions/actions';
 import { WithRefreshOnLoad } from '../../../layouts/project';
 
+import i18n from 'meteor/universe:i18n';
+
 class NLUModel extends React.Component {
     constructor(props) {
         super(props);
@@ -162,12 +164,12 @@ class NLUModel extends React.Component {
                     />
                 ),
             },
-            { menuItem: 'Synonyms', render: () => <Synonyms model={model} /> },
-            { menuItem: 'Gazette', render: () => <Gazette model={model} /> },
-            { menuItem: 'API', render: () => (<API model={model} instance={instance} />) },
-            { menuItem: 'Insert many', render: () => <IntentBulkInsert onNewExamples={this.onNewExamples} data-cy='insert-many' /> },
+            { menuItem: i18n.__('synonyms'), render: () => <Synonyms model={model} /> },
+            { menuItem: i18n.__('gazette'), render: () => <Gazette model={model} /> },
+            { menuItem: i18n.__('api'), render: () => (<API model={model} instance={instance} />) },
+            { menuItem: i18n.__('insert_many'), render: () => <IntentBulkInsert onNewExamples={this.onNewExamples} data-cy='insert-many' /> },
         ];
-        if (chitChatProjectId) tabs.splice(4, 0, { menuItem: 'Chit Chat', render: () => <ChitChat model={model} /> });
+        if (chitChatProjectId) tabs.splice(4, 0, { menuItem: i18n.__(chit_hat), render: () => <ChitChat model={model} /> });
         return tabs;
     };
 
@@ -181,8 +183,8 @@ class NLUModel extends React.Component {
         const languageName = nluModelLanguages.find(language => (language.value === model.language));
         const cannotDelete = model.language !== projectDefaultLanguage;
         return [
-            { menuItem: 'Pipeline', render: () => <NLUPipeline model={model} onSave={this.onUpdateModel} projectId={projectId} /> },
-            { menuItem: 'Delete', render: () => <DeleteModel model={model} onDeleteModel={this.onDeleteModel} cannotDelete={cannotDelete} language={languageName.text} /> },
+            { menuItem: i18n.__('pipeline'), render: () => <NLUPipeline model={model} onSave={this.onUpdateModel} projectId={projectId} /> },
+            { menuItem: i18n.__('delete'), render: () => <DeleteModel model={model} onDeleteModel={this.onDeleteModel} cannotDelete={cannotDelete} language={languageName.text} /> },
         ];
     };
 
@@ -214,7 +216,7 @@ class NLUModel extends React.Component {
                     size='tiny'
                     content={(
                         <div><Icon name='warning' />
-                            You need at least two distinct intents to train NLU
+                            {i18n.__('add_two_distinct_intent')}
                         </div>
                     )}
                     info

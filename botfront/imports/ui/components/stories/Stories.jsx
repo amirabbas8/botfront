@@ -20,6 +20,8 @@ import StoryEditors from './StoryEditors';
 import { Loading } from '../utils/Utils';
 import { can } from '../../../lib/scopes';
 
+import i18n from 'meteor/universe:i18n';
+
 const SlotsEditor = React.lazy(() => import('./Slots'));
 const PoliciesEditor = React.lazy(() => import('../settings/CorePolicy'));
 
@@ -33,15 +35,11 @@ const isStoryDeletable = (story, stories, tree) => {
         : !(story.children || []).some(c => isDestinationOrOrigin(tree.items[c]));
     const message = deletable
         ? story.canBearChildren
-            ? `The story group ${story.title
-            } and all its stories in it will be deleted. This action cannot be undone.`
-            : `The story ${story.title
-            } will be deleted. This action cannot be undone.`
+            ? i18n.__('story_group_delete_confirm', [story.title])
+            : i18n.__('story_delete_confirm')
         : story.canBearChildren
-            ? `The story group ${story.title
-            } cannot be deleted as it contains links.`
-            : `The story ${story.title
-            } cannot be deleted as it is linked to another story.`;
+            ? i18n.__('story_group_delete_not_possible',[story.title])
+            : i18n.__('story_delete_not_possible',[story.title]);
     return [deletable, message];
 };
 

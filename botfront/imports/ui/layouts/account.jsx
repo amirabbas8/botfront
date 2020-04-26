@@ -7,6 +7,7 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import { getBackgroundImageUrl } from '../../lib/utils';
 import { GlobalSettings } from '../../api/globalSettings/globalSettings.collection';
+import i18n from 'meteor/universe:i18n';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class AccountLayout extends React.Component {
@@ -43,9 +44,9 @@ class AccountLayout extends React.Component {
 
         return (
             <div style={bgStyle} className='setup'>
-                <Header style={titleStyle} content='Botfront.' />
+                <Header style={titleStyle} content={i18n.__('app_name')} />
                 <div style={{ textAlign: 'center' }}>
-                    <DocumentTitle title={name || 'Botfront'} />
+                    <DocumentTitle title={name || i18n.__('app_name')} />
                     <div style={loginBoxContainer}>{children}</div>
                 </div>
                 <Alert stack={{ limit: 3 }} />

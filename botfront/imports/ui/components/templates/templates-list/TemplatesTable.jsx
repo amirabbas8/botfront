@@ -16,6 +16,8 @@ import {
 import { languages } from '../../../../lib/languages';
 import BotResponseEditor from './BotResponseEditor';
 
+import i18n from 'meteor/universe:i18n';
+
 class TemplatesTable extends React.Component {
     constructor(props) {
         super(props);
@@ -88,7 +90,7 @@ class TemplatesTable extends React.Component {
                                     disabled={isInStory}
                                 />
                             )}
-                            content='This response cannot be deleted because it is used in a story'
+                            content={i18n.__('error_delete_used_responce')}
                             disabled={!isInStory}
                         />
                     );
@@ -153,9 +155,8 @@ class TemplatesTable extends React.Component {
         <Message
             info
             icon='warning'
-            header='Create a NLU model first'
-            content='Templates are multilingual and Botfront determines available languages from NLU models.
-            Before adding templates, you must create one NLU model for every language your want to handle'
+            header={i18n.__('first_create_nlu')}
+            content={i18n.__('template_explanation', i18n.__('app_name'))}
         />
     );
 
@@ -163,12 +164,12 @@ class TemplatesTable extends React.Component {
         <Message
             info
             icon='warning'
-            header='You haven&#39;t created bot responses yet'
+            header={i18n.__('empty_responce')}
             content={(
                 <div>
-                    Click on the&nbsp;
-                    <strong>Add Bot Response</strong>
-                    &nbsp;button to create your first bot response.
+                    {i18n.__('empty_responce_1')}&nbsp;
+                    <strong>{i18n.__('empty_responce_2')}</strong>
+                    &nbsp;{i18n.__('empty_responce_3')}
                 </div>
             )}
             data-cy='no-responses'
@@ -245,14 +246,14 @@ class TemplatesTable extends React.Component {
                 {nluLanguages.length === 0 && this.renderNoLanguagesAvailable()}
                 {nluLanguages.length > 0 && templates.length === 0 && this.renderNoTemplate()}
                 {nluLanguages.length > 0 && templates.length > 0
-                && (
-                    <Tab
-                        activeIndex={activeIndex}
-                        menu={{ pointing: true, secondary: true }}
-                        panes={this.getPanes(templates)}
-                        onTabChange={this.onTabChange}
-                    />
-                )}
+                    && (
+                        <Tab
+                            activeIndex={activeIndex}
+                            menu={{ pointing: true, secondary: true }}
+                            panes={this.getPanes(templates)}
+                            onTabChange={this.onTabChange}
+                        />
+                    )}
                 {newResponse.open && (
                     <BotResponseEditor
                         trigger={<div />}

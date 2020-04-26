@@ -2,6 +2,8 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
+import i18n from 'meteor/universe:i18n';
+
 // eslint-disable-next-line react/prefer-stateless-function
 class StepConsentComponent extends React.Component {
     render() {
@@ -11,20 +13,20 @@ class StepConsentComponent extends React.Component {
                 <br />
                 <br />
                 <span className='step-text'>
-                    Do you want to be notified of new releases ?
+                    {i18n.__('get_notified_new_releases')}
                 </span>
                 <br />
                 <br />
                 <br />
                 <span className='legal-text'>
-                    Privacy notice: your email address, first and last names will be transferred to Mailchimp. See their
+                    {i18n.__('privacy_notice_mailchimp_start')}
                     <br />
                     <a
                         href='https://mailchimp.com/legal/'
                         target='_blank'
                         rel='noopener noreferrer'
                     >
-                        privacy practices here.
+                        {i18n.__('privacy_notice_mailchimp_end')}
                     </a>
                 </span>
                 <br />
@@ -33,7 +35,7 @@ class StepConsentComponent extends React.Component {
                 <div style={{ textAlign: 'center' }}>
                     <Button
                         data-cy='email-consent'
-                        content='Yes, Finish'
+                        content={i18n.__('yes_finish')}
                         primary
                         size='small'
                         onClick={() => onSubmit(true)}
@@ -42,7 +44,7 @@ class StepConsentComponent extends React.Component {
                         data-cy='email-refuse'
                         basic
                         size='small'
-                        content='Maybe later'
+                        content={i18n.__('maybe_later')}
                         onClick={() => onSubmit(false)}
                     />
                 </div>

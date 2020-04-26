@@ -13,6 +13,8 @@ import Instances from './Instances';
 import DefaultDomain from './DefaultDomain';
 import ImportExportProject from './ImportExportProject';
 
+import i18n from 'meteor/universe:i18n';
+
 class Settings extends React.Component {
     constructor(props) {
         super(props);
@@ -44,27 +46,27 @@ class Settings extends React.Component {
         const { orchestratorMenuItems, orchestrator } = this.state;
         let panes = [
             {
-                menuItem: <Menu.Item data-cy='project-settings-menu-info' icon='info' content='Project Info' key='Project Info' />,
+                menuItem: <Menu.Item data-cy='project-settings-menu-info' icon='info' content={i18n.__('project_info')} key='Project Info' />,
                 render: () => <Tab.Pane><ProjectInfo /></Tab.Pane>,
             },
             {
-                menuItem: <Menu.Item data-cy='project-settings-menu-credentials' icon='key' content='Credentials' key='Credentials' />,
+                menuItem: <Menu.Item data-cy='project-settings-menu-credentials' icon='key' content={i18n.__('credentials')} key='Credentials' />,
                 render: () => <Tab.Pane><Credentials orchestrator={orchestrator} /></Tab.Pane>,
             },
             {
-                menuItem: <Menu.Item data-cy='project-settings-menu-endpoints' icon='code' content='Endpoints' key='Endpoints' />,
+                menuItem: <Menu.Item data-cy='project-settings-menu-endpoints' icon='code' content={i18n.__('endpoints')} key='Endpoints' />,
                 render: () => <Tab.Pane><Endpoints orchestrator={orchestrator} /></Tab.Pane>,
             },
             {
-                menuItem: <Menu.Item data-cy='project-settings-menu-instances' icon='server' content='Instance' key='Instances' />,
+                menuItem: <Menu.Item data-cy='project-settings-menu-instances' icon='server' content={i18n.__('instances')} key='Instances' />,
                 render: () => <Tab.Pane><Instances /></Tab.Pane>,
             },
             {
-                menuItem: <Menu.Item data-cy='project-settings-menu-default-domain' icon='globe' content='Default Domain' key='Default Domain' />,
+                menuItem: <Menu.Item data-cy='project-settings-menu-default-domain' icon='globe' content={i18n.__('default_domain')} key='Default Domain' />,
                 render: () => <Tab.Pane><DefaultDomain /></Tab.Pane>,
             },
             {
-                menuItem: <Menu.Item data-cy='project-settings-menu-import-export' icon='download' content='Import/Export' key='Import/Export' />,
+                menuItem: <Menu.Item data-cy='project-settings-menu-import-export' icon='download' content={i18n.__('import_export')} key='Import/Export' />,
                 render: () => <Tab.Pane><ImportExportProject /></Tab.Pane>,
             },
             {
@@ -72,7 +74,7 @@ class Settings extends React.Component {
                     <Menu.Item
                         data-cy='project-settings-more'
                         icon='ellipsis horizontal'
-                        content='More Settings'
+                        content={i18n.__('more_settings')}
                         key='More Settings'
                         onClick={this.handleMoreSettings}
                     />
@@ -89,7 +91,7 @@ class Settings extends React.Component {
     render() {
         return (
             <>
-                <PageMenu title='Settings' icon='setting' />
+                <PageMenu title={i18n.__(Settings)} icon='setting' />
                 <Container>
                     <Tab menu={{ vertical: true }} grid={{ paneWidth: 12, tabWidth: 4 }} panes={this.getSettingsPanes()} />
                 </Container>

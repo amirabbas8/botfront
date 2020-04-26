@@ -12,6 +12,8 @@ import {
 } from '../../store/actions/actions';
 import { ConversationOptionsContext } from './Context';
 
+import i18n from 'meteor/universe:i18n';
+
 const StoryTopMenu = ({
     storyId,
     title,
@@ -117,8 +119,8 @@ const StoryTopMenu = ({
                     {isDestinationStory ? (
                         <Icon name='arrow alternate circle right' color='green' fitted />
                     ) : (
-                        <span className='story-title-prefix'>##</span>
-                    )}
+                            <span className='story-title-prefix'>##</span>
+                        )}
                     <input
                         data-cy='story-title'
                         value={newTitle}
@@ -152,8 +154,7 @@ const StoryTopMenu = ({
                             data-cy='connected-to'
                         >
                             <Icon name='info circle' />
-                            There are one or more stories linked to this story. You can
-                            only delete it after unlinking all stories.
+                            {i18n.__('info_story_delete')}
                         </Message>
                     )}
                 >

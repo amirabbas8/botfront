@@ -25,6 +25,8 @@ import { setWorkingLanguage } from '../../../../store/actions/actions';
 import ExampleUtils from '../../../utils/ExampleUtils';
 import { ConversationOptionsContext } from '../../Context';
 
+import i18n from 'meteor/universe:i18n';
+
 
 const NLUModalContent = (props) => {
     const {
@@ -88,7 +90,7 @@ const NLUModalContent = (props) => {
     }, [existingExamples]);
 
     const getIntentForDropdown = (all) => {
-        const intentSelection = all ? [{ text: 'ALL', value: null }] : [];
+        const intentSelection = all ? [{ text: i18n.__('all'), value: null }] : [];
         intents.forEach((i) => {
             intentSelection.push({
                 text: i,
@@ -213,23 +215,23 @@ const NLUModalContent = (props) => {
             if (deleted) {
                 text = 'deleted';
                 color = '';
-                title = 'Deleted Example';
-                message = 'You just deleted this user utterance and it will be removed from the training set when you save';
+                title = i18n.__('deleted_example');
+                message = i18n.__('deleted_example_message');
             } else if (!checkPayloadsMatch({ intent, entities: cellEntities })) {
                 text = 'invalid';
                 color = 'red';
-                title = 'Invalid Example';
-                message = 'The intent and entities associated with this utterance do not correspond to the currently selected payload. Either adjust intent and entities or delete this utterance';
+                title = i18n.__('invalid_example');
+                message = i18n.__('invalid_example_message');
             } else if (isNew) {
                 text = 'new';
                 color = 'green';
-                title = 'New example';
-                message = 'You just added this utterance and it is not yet added to the training set';
+                title = i18n.__('new_example');
+                message = i18n.__('new_example_message');
             } else if (edited) {
                 text = 'edited';
                 color = 'blue';
-                title = 'Edited example';
-                message = 'You edited this utterance and the changes are not yet saved in the training set';
+                title = i18n.__('edited_example');
+                message = i18n.__('edited_example_message');
             }
             return text ? (
                 <Popup
@@ -309,8 +311,8 @@ const NLUModalContent = (props) => {
                                     </Button>
                                 </span>
                             )}
-                            header='Cannot save changes'
-                            content='You must fix invalid utterances prior to saving'
+                            header={i18n.__('cannot_save_changes')}
+                            content={i18n.__('fix_invalid_utter')}
                         />
                         <Popup
                             trigger={(
@@ -320,7 +322,7 @@ const NLUModalContent = (props) => {
                             )}
                             content={(
                                 <ConfirmPopup
-                                    description='Are you sure? All the data you entered above will be discarded!'
+                                    description={i18n.__('sure_entered_data_remove')}
                                     onYes={closeModal}
                                     onNo={() => setCancelPopupOpen(false)}
                                 />

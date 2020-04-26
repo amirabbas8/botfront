@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Icon, Popup } from 'semantic-ui-react';
 
+import i18n from 'meteor/universe:i18n';
+
 import {
     setShowChat, setChatInitPayload, setShouldRefreshChat,
 } from '../../store/actions/actions';
@@ -33,7 +35,7 @@ const StoryPlayButton = (props) => {
             )}
             content={(
                 <>
-                    To start a conversation from the story editor, the story must start with a user utterance.
+                {i18n.__('start_conversation_from_story_editor')}    
                 </>
             )}
             disabled={!!initPayload}

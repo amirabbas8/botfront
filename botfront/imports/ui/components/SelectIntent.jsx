@@ -4,6 +4,7 @@ import {Meteor} from "meteor/meteor";
 
 import Select from 'react-select';
 
+import i18n from 'meteor/universe:i18n';
 
 export default class SelectIntent extends React.Component {
   state = {
@@ -21,7 +22,7 @@ export default class SelectIntent extends React.Component {
             simple
             item
             name={this.props.name}
-            placeholder='Filter by intent'
+            placeholder={i18n.__('Filter by intent')}
             search
             defaultValue={this.props.selectedOption}
             selection

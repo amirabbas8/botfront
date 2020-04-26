@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {Button, Header, Icon, Modal} from 'semantic-ui-react'
 
+import i18n from 'meteor/universe:i18n';
+
 export default class Confirm extends React.Component {
     constructor(props) {
         super(props);
@@ -31,10 +33,10 @@ export default class Confirm extends React.Component {
                 </Modal.Content>
                 <Modal.Actions>
                     <Button basic color='red' onClick={this.props.negCb || this.close.bind(this)}>
-                        <Icon name='remove'/> {this.props.no || 'No'}
+                        <Icon name='remove'/> {this.props.no || i18n.__('No')}
                     </Button>
                     <Button color='green' inverted onClick={this.props.posCb || this.close.bind(this)}>
-                        <Icon name='checkmark'/> {this.props.pos || 'Yes'}
+                        <Icon name='checkmark'/> {this.props.pos || i18n.__('Yes')}
                     </Button>
                 </Modal.Actions>
             </Modal>
