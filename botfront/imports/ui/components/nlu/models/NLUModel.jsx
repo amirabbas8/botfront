@@ -169,7 +169,7 @@ class NLUModel extends React.Component {
             { menuItem: i18n.__('api'), render: () => (<API model={model} instance={instance} />) },
             { menuItem: i18n.__('insert_many'), render: () => <IntentBulkInsert onNewExamples={this.onNewExamples} data-cy='insert-many' /> },
         ];
-        if (chitChatProjectId) tabs.splice(4, 0, { menuItem: i18n.__(chit_hat), render: () => <ChitChat model={model} /> });
+        if (chitChatProjectId) tabs.splice(4, 0, { menuItem: i18n.__('chit_chat'), render: () => <ChitChat model={model} /> });
         return tabs;
     };
 

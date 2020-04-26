@@ -14,6 +14,9 @@ import AceField from '../../../utils/AceField';
 import SaveButton from '../../../utils/SaveButton';
 import { Can, can } from '../../../../../lib/scopes';
 
+import i18n from 'meteor/universe:i18n';
+
+
 export default class NLUPipeline extends React.Component {
     constructor(props) {
         super(props);
@@ -69,7 +72,7 @@ export default class NLUPipeline extends React.Component {
                             }
                             content={(
                                 <p>
-                                    You need to <b>re-train</b> your model to deploy them
+                                    {i18n.__('retrain_model_deploy')}
                                 </p>
                             )}
                         />

@@ -11,6 +11,9 @@ import { connect } from 'react-redux';
 import { debounce } from 'lodash';
 import queryString from 'query-string';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class API extends React.Component {
     constructor(props) {
         super(props);
@@ -94,7 +97,7 @@ class API extends React.Component {
                 <div id='playground'>
                     <Form>
                         <Form.Field>
-                            <TextArea name='query' placeholder='User says...' autoheight='true' rows={1} value={query} onChange={this.handleTextChange} />
+                            <TextArea name='query' placeholder={i18n.__('user_says')} autoheight='true' rows={1} value={query} onChange={this.handleTextChange} />
                         </Form.Field>
                         <br />
                         <Checkbox slider label='Show Duckling params' onChange={this.handleDucklingOptionsChange} />
@@ -103,7 +106,7 @@ class API extends React.Component {
                         {tz && (
                             <Form.Field>
                                 <label>Timezone: </label>
-                                <Dropdown name='tz' placeholder='Select timezone' search selection value={tz} options={tzOptions} onChange={this.handleChange} />
+                                <Dropdown name='tz' placeholder={i18n.__('select_timezone')} search selection value={tz} options={tzOptions} onChange={this.handleChange} />
                             </Form.Field>
                         )}
                         {reftime !== 0 && (
