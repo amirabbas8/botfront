@@ -11,6 +11,9 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import { passwordComplexityRegex } from '../../../api/user/user.methods';
 
+import i18n from 'meteor/universe:i18n';
+
+
 const changePasswordSchema = new SimpleSchema(
     {
         password: {
@@ -32,8 +35,8 @@ const changePasswordSchema = new SimpleSchema(
 
 changePasswordSchema.messageBox.messages({
     en: {
-        passwordMismatch: 'The passwords are not matching. Make sure you enter the same password in both fields',
-        passwordTooSimple: 'Your password should contain at least 9 characters and have uppercase, lowercase, digit and special characters',
+        passwordMismatch: i18n.__('password_mismatch')},
+        passwordTooSimple: i18n.__('password_simple'),
     },
 });
 
@@ -61,7 +64,7 @@ export default class ChangePassword extends React.Component {
         const { userId } = this.props;
         const { password, passwordVerify } = formData;
         if (password !== passwordVerify) {
-            Alert.error('Passwords don\'t match', {
+            Alert.error(i18n.__('password_not_match'), {
                 position: 'bottom',
                 timeout: 2000,
             });
@@ -70,13 +73,13 @@ export default class ChangePassword extends React.Component {
 
         Meteor.call('user.changePassword', userId, password, (err) => {
             if (err) {
-                Alert.error(`Error: ${err.reason}`, {
+                Alert.error(i18n.__('error',[err.reason]), {
                     position: 'bottom',
                     timeout: 'none',
                 });
             } else {
                 this.setState(this.getInitialState());
-                Alert.success('Password changed', {
+                Alert.success(i18n.__('password_changed'), {
                     position: 'bottom',
                     timeout: 2000,
                 });
@@ -88,9 +91,9 @@ export default class ChangePassword extends React.Component {
         return (
             <AutoForm schema={changePasswordSchemaBridge} onSubmit={this.handleChangePassword}>
                 <Header>Change Password</Header>
-                <AutoField name='password' placeholder='password' type='password' label={null} />
-                <AutoField name='passwordVerify' placeholder='password' type='password' label={null} />
-                <Button data-cy='change-password'>Change</Button>
+                <AutoField name='password' placeholder={i18n.__('password')} type='password' label={null} />
+                <AutoField name='passwordVerify' placeholder={i18n.__('password')} type='password' label={null} />
+                <Button data-cy='change-password'>{i18n.__('change')}</Button>
                 <ErrorsField />
             </AutoForm>
         );

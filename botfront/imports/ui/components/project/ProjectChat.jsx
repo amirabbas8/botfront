@@ -10,6 +10,9 @@ import Chat from './Chat';
 import { getLanguagesFromProjectId } from '../../../lib/utils';
 import { setShouldRefreshChat } from '../../store/actions/actions';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class ProjectChat extends React.Component {
     constructor(props) {
         super(props);
@@ -117,7 +120,7 @@ class ProjectChat extends React.Component {
                                         data-cy='restart-chat'
                                     />
                                 )}
-                                content='Restart the conversation'
+                                content={i18n.__('restart_conversation')}
                                 position='bottom right'
                                 className='redo-chat-popup'
                                 disabled={noChannel}
@@ -134,7 +137,7 @@ class ProjectChat extends React.Component {
                                         data-cy='close-chat'
                                     />
                                 )}
-                                content='Close the conversation'
+                                content={i18n.__('close_conversation')}
                                 position='bottom right'
                                 className='redo-chat-popup'
                             />

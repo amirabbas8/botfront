@@ -5,6 +5,9 @@ import { Popup, Icon } from 'semantic-ui-react';
 import UserUtteranceViewer from './UserUtteranceViewer';
 import { Context } from '../../../../../stories/CanonicalPopup.stories';
 
+import i18n from 'meteor/universe:i18n';
+
+
 const CanonicalPopup = (props) => {
     const {
         trigger,
@@ -14,12 +17,12 @@ const CanonicalPopup = (props) => {
     const { getCanonicalExample } = useContext(Context);
 
     const canonicalExample = getCanonicalExample(example);
-    
+
     const renderPopupContent = () => {
         if (!canonicalExample) {
             return (
                 <span className='canonical-popup-content'>
-                    <p>There are no examples associated with this intent.</p>
+                    <p>{i18n.__('intent_without_example')}</p>
                 </span>
             );
         }

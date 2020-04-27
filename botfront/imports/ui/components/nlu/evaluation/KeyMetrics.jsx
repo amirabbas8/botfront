@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import {Meteor} from "meteor/meteor";
 import {Button, Form, Icon, Label, Loader, Message, Popup, Statistic, Tab} from "semantic-ui-react";
 
+import i18n from 'meteor/universe:i18n';
+
+
 
 export class Metrics extends React.Component {
 
@@ -36,17 +39,17 @@ export default class IntentMetrics extends React.Component {
             {
                 label: "F1-Score",
                 value: this.props.f1,
-                help: "A more general measure of the quality of your model based on precision and accuracy"
+                help: i18n.__('f1_score_help')
             },
             {
                 label: "Precision",
                 value: this.props.precision,
-                help: "On 100 examples predicted 'greet', how many were actually labeled 'greet'"
+                help: i18n.__('precision_help')
             },
             {
                 label: "Accuracy",
                 value: this.props.accuracy,
-                help: "On 100 examples labeled 'greet', how many were actually predicted 'greet'"
+                help: i18n.__('accuracy_help')
             },
         ];
 

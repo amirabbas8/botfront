@@ -10,6 +10,9 @@ import { examplePropType } from '../../utils/ExampleUtils';
 import { Info } from '../../utils/Utils';
 import { Metrics } from './KeyMetrics';
 
+import i18n from 'meteor/universe:i18n';
+
+
 function ExampleTextComparison({ example, prediction }) {
     return (
         <div className='entity_evaluation'>
@@ -89,12 +92,12 @@ export default class EntityReport extends React.Component {
 
         this.errorTypes = ['Correct', 'Overlap', 'Mismatch', 'Not Found'];
         this.errorInfo = [
-            'This field measures the portion of entities that were matched correctly, in both position and classification',
-            'These errors correspond to a correct classification but slightly incorrect token boundary',
-            'These indicate an overlapping token boundary but conflicting classification',
-            'Not found indicates either that the entity was missed entirely or appeared in a non-overlapping position in the text',
+            i18n.__('error_entity_correct_info'),
+            i18n.__('error_entity_overlap_info'),
+            i18n.__('error_entity_mismatch_info'),
+            i18n.__('error_entity_not_found_info'),
         ];
-        this.errorMessages = ['', 'Incorrect token boundary for this entity', 'Incorrect classification for this entity', 'No corresponding entity in prediction'];
+        this.errorMessages = ['', i18n.__('error_entity_overlap_message'), i18n.__('error_entity_mismatch_message'), i18n.__('error_entity_not_found_message')];
     }
 
     getEntityData() {
@@ -311,8 +314,8 @@ export default class EntityReport extends React.Component {
         }
         return (
             <Message negative>
-                <Message.Header>Nothing to show</Message.Header>
-                <p>There are no entities in the evaluation data set that can be shown.</p>
+                <Message.Header>{i18n.__('nothing_to_show')}</Message.Header>
+                <p>{i18n.__('nothing_to_show_description')}</p>
             </Message>
         );
     }

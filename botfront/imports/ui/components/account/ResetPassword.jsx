@@ -14,6 +14,9 @@ import { passwordComplexityRegex } from '../../../api/user/user.methods';
 import { wrapMeteorCallback } from '../utils/Errors';
 import { GlobalSettings } from '../../../api/globalSettings/globalSettings.collection';
 
+import i18n from 'meteor/universe:i18n';
+
+
 const resetPasswordSchema = new SimpleSchema(
     {
         password: {
@@ -36,8 +39,8 @@ const resetPasswordSchemaBridge = new SimpleSchema2Bridge(resetPasswordSchema);
 
 resetPasswordSchema.messageBox.messages({
     en: {
-        passwordMismatch: 'The passwords are not matching. Make sure you enter the same password in both fields',
-        passwordTooSimple: 'Your password should contain at least 9 characters and have uppercase, lowercase, digit and special characters',
+        passwordMismatch: i18n.__('password_mismatch'),
+        passwordTooSimple: i18n.__('password_simple'),
     },
 });
 
@@ -97,15 +100,15 @@ class ResetPassword extends React.Component {
             <Segment>
                 <AutoForm model={{}} schema={resetPasswordSchemaBridge} onSubmit={this.handleResetPassword} className='ui large' disabled={loading}>
                     <ErrorsField />
-                    <TextField name='password' iconLeft='lock' placeholder='Password' type='password' label={null} />
-                    <TextField name='passwordVerify' iconLeft='lock' placeholder='Repeat password' type='password' label={null} />
+                    <TextField name='password' iconLeft='lock' placeholder={i18n.__('password')} type='password' label={null} />
+                    <TextField name='passwordVerify' iconLeft='lock' placeholder={i18n.__('repeat_password')} type='password' label={null} />
                     {reCatpchaSiteKey && (
                         <div>
                             <ReCAPTCHA sitekey={reCatpchaSiteKey} onChange={this.onCaptcha} ref={reCaptchaRef} />
                             <br />
                         </div>
                     )}
-                    <SubmitField value='RESET YOUR PASSWORD' className='black large basic fluid' disabled={reCatpchaSiteKey && !reCaptcha} />
+                    <SubmitField value={i18n.__('reset_password')} className='black large basic fluid' disabled={reCatpchaSiteKey && !reCaptcha} />
                 </AutoForm>
             </Segment>
         );

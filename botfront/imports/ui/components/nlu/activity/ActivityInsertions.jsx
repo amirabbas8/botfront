@@ -10,6 +10,9 @@ import {
 import { upsertActivity as upsertActivityMutation } from './mutations';
 import apolloClient from '../../../../startup/client/apollo';
 
+import i18n from 'meteor/universe:i18n';
+
+
 export async function populateActivity(instance, examples, modelId, callback) {
     return Meteor.call('rasa.parse', instance, examples, async (err, activity) => {
         if (err) return;
@@ -37,7 +40,7 @@ export default function ActivityInsertions(props) {
 
     const saveExamples = () => {
         setLoading(true);
-        
+
         const examples = text.split('\n')
             .filter(t => !t.match(/^\s*$/))
             .map(t => ({ text: t, lang }));
@@ -48,7 +51,7 @@ export default function ActivityInsertions(props) {
 
     return (
         <Tab.Pane>
-            <Message info content='Add utterances below (one per line, 50 max). When you click on Add Utterances, they will be processed and the output will be shown in the New Utterances tab' />
+            <Message info content={i18n.__('add_utterances')} />
             <br />
             <Form>
                 <TextArea

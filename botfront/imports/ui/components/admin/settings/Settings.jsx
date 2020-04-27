@@ -16,6 +16,9 @@ import AceField from '../../utils/AceField';
 import { wrapMeteorCallback } from '../../utils/Errors';
 import { PageMenu } from '../../utils/Utils';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class Settings extends React.Component {
     constructor(props) {
         super(props);
@@ -91,10 +94,10 @@ class Settings extends React.Component {
         const { projectId } = this.props;
         const { orchestratorSettingsComponent: OrchestratorSettingsComponent, orchestrator } = this.state;
         let panes = [
-            { menuItem: 'Default NLU Pipeline', render: this.renderDefaultNLUPipeline },
-            { menuItem: 'Security', render: this.renderSecurityPane },
-            { menuItem: 'Appearance', render: this.renderAppearance },
-            { menuItem: 'Misc', render: this.renderMisc },
+            { menuItem: i18n.__('default_nlu_pipeline'), render: this.renderDefaultNLUPipeline },
+            { menuItem: i18n.__('security'), render: this.renderSecurityPane },
+            { menuItem: i18n.__('appearance'), render: this.renderAppearance },
+            { menuItem: i18n.__('misc'), render: this.renderMisc },
         ];
 
         if (OrchestratorSettingsComponent) {
@@ -108,7 +111,7 @@ class Settings extends React.Component {
                     menuItem: (
                         <Menu.Item
                             icon='backward'
-                            content='Project Settings'
+                            content={i18n.__('project_settings')}
                             key='Project Settings'
                             onClick={this.handleReturnToProjectSettings}
                         />
@@ -131,7 +134,7 @@ class Settings extends React.Component {
                             <Grid.Column width={3} />
                             <Grid.Column width={13}>
                                 <ErrorsField />
-                                <SubmitField value='Save' className='primary' />
+                                <SubmitField value={i18n.__('save')} className='primary' />
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>

@@ -7,6 +7,9 @@ import { Comment, Label, Message } from 'semantic-ui-react';
 import UserUtteredEventViewer from '../example_editor/UserUtteredEventViewer';
 import ExampleUtils from '../utils/ExampleUtils';
 
+import i18n from 'meteor/universe:i18n';
+
+
 function BotResponse({
     type, text, data, key,
 }) {
@@ -149,19 +152,19 @@ function ConversationDialogueViewer({ conversation: { tracker, userId }, mode })
                     <Turn userSays={userSays} userId={userId} botResponses={botResponses} key={`dialogue-turn-${index}`} />
                 ))
             ) : (
-                <Message
-                    info
-                    icon='warning'
-                    header='No events to show'
-                    content={(() => {
-                        if (mode !== 'debug') {
-                            return 'check debug mode for non-dialogue events.';
-                        }
+                    <Message
+                        info
+                        icon='warning'
+                        header={i18n.__('no_events_to_show')}
+                        content={(() => {
+                            if (mode !== 'debug') {
+                                return i18n.__('debug_for_non_dialogue_events');
+                            }
 
-                        return 'check JSON mode to view the full tracker object.';
-                    })()}
-                />
-            )}
+                            return i18n.__('check_json_mode_tracker');
+                        })()}
+                    />
+                )}
         </Comment.Group>
     );
 }

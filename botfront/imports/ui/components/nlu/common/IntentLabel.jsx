@@ -7,6 +7,9 @@ import { ProjectContext } from '../../../layouts/context';
 import { OOS_LABEL } from '../../constants.json';
 import DataTable from '../../common/DataTable';
 
+import i18n from 'meteor/universe:i18n';
+
+
 const Intent = React.forwardRef((props, ref) => {
     const {
         value,
@@ -65,7 +68,7 @@ const Intent = React.forwardRef((props, ref) => {
 
     const renderInsertNewIntent = () => (
         <Input
-            placeholder='Filter or create'
+            placeholder={i18n.__('filter_or_create')}
             fluid
             onChange={handleTypeInput}
             onKeyDown={handleKeyDown}
@@ -100,13 +103,13 @@ const Intent = React.forwardRef((props, ref) => {
                     onClickRow={({ datum: { intent } }) => handleChange(intent)}
                 />
             ) : (
-                <Button
-                    fluid
-                    color='purple'
-                    content='Create new intent'
-                    onClick={() => handleChange(typeInput)}
-                />
-            )}
+                    <Button
+                        fluid
+                        color='purple'
+                        content={i18n.__('create_new_intent')}
+                        onClick={() => handleChange(typeInput)}
+                    />
+                )}
         </div>
     );
 
@@ -161,7 +164,7 @@ Intent.defaultProps = {
     value: null,
     allowEditing: false,
     allowAdditions: false,
-    onChange: () => {},
+    onChange: () => { },
     disabled: false,
     enableReset: false,
 };

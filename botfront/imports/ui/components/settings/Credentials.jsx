@@ -13,6 +13,9 @@ import ChangesSaved from '../utils/ChangesSaved';
 import SaveButton from '../utils/SaveButton';
 import AceField from '../utils/AceField';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class Credentials extends React.Component {
     constructor(props) {
         super(props);
@@ -68,7 +71,7 @@ class Credentials extends React.Component {
                             <p>
                                 {orchestrator === 'docker-compose' && (
                                     <span>
-                                        Run <b>botfront restart rasa</b> from your project's folder to apply changes.
+                                        {i18n.__('restart_rasa')}
                                     </span>
                                 )}
                             </p>

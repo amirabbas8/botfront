@@ -16,6 +16,9 @@ import SelectField from '../form_fields/SelectField';
 import { getNluModelLanguages } from '../../../api/nlu_model/nlu_model.utils';
 import { languages } from '../../../lib/languages';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class ProjectInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -68,9 +71,9 @@ class ProjectInfo extends React.Component {
         const nluInsertArray = languageArray.map(language => Meteor.callWithPromise(
             'nlu.insert',
             {
-                name: 'Default Model',
+                name: i18n.__('default_model'),
                 language,
-                description: 'Default description',
+                description: i18n.__('default_description'),
             },
             projectId,
         ));
@@ -103,7 +106,7 @@ class ProjectInfo extends React.Component {
                         newSupportedLanguages,
                     );
                 }
-            }, 'Changes saved'),
+            }, i18n.__('changes_saved')),
         );
     };
 
@@ -113,8 +116,7 @@ class ProjectInfo extends React.Component {
             info
             content={(
                 <>
-                    To remove a language from the project, go to{' '}
-                    <strong> NLU &gt; Settings &gt; Delete </strong>.
+                    {i18n.__('remove_language')}
                 </>
             )}
         />

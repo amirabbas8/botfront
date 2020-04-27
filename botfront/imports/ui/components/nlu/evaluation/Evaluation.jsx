@@ -25,6 +25,9 @@ import { Loading } from '../../utils/Utils';
 
 import 'react-select/dist/react-select.css';
 
+import i18n from 'meteor/universe:i18n';
+
+
 
 class Evaluation extends React.Component {
     constructor(props) {
@@ -164,7 +167,7 @@ class Evaluation extends React.Component {
             const parsed = JSON.parse(data);
             if (loading) this.setState({ data: parsed, loading: false });
         } catch (e) {
-            Alert.error('Error: you must upload a JSON file with the same format as an export', {
+            Alert.error(i18n.__('error_upload_json'), {
                 position: 'top',
                 timeout: 'none',
             });
@@ -200,10 +203,10 @@ class Evaluation extends React.Component {
                     <Form>
                         <div id='test_set_buttons'>
                             <InputButtons
-                                labels={['Use training set', 'Upload test set', 'Use validated examples']}
+                                labels={[i18n.__('use_training_set'), i18n.__('upload_test_set'), i18n.__('use_validated_examples')]}
                                 operations={[this.useTrainingSet.bind(this), this.useTestSet.bind(this), this.useValidatedSet.bind(this)]}
                                 defaultSelection={defaultSelection}
-                                onDefaultLoad={defaultSelection === 2 ? this.evaluate : () => {}}
+                                onDefaultLoad={defaultSelection === 2 ? this.evaluate : () => { }}
                                 selectedIndex={selectedIndex}
                             />
                         </div>

@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import { entityPropType } from '../../utils/EntityUtils';
 
+import i18n from 'meteor/universe:i18n';
+
+
 // eslint-disable-next-line no-control-regex
 const asciiChar = /^[\x21-\x7E]+$/;
 
@@ -33,12 +36,12 @@ function EntityDropdown({
             button
             labeled
             className='icon entity-dropdown'
-            placeholder='Select an entity... '
+            placeholder={i18n.__('select_entity')}
             search
             selection
             value={entity && entity.entity}
             allowAdditions={allowAdditions}
-            additionLabel='Add entity: '
+            additionLabel={i18n.__('add_entity') + ': '}
             onAddItem={onAddItem}
             onChange={onChange}
             onSearchChange={handleSearchChange}

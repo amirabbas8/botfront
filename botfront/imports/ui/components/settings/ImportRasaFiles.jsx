@@ -33,6 +33,9 @@ import {
 } from './fileImporters';
 import { ProjectContext } from '../../layouts/context';
 
+import i18n from 'meteor/universe:i18n';
+
+
 const ImportRasaFiles = (props) => {
     const { existingStoryGroups, projectId, defaultDomain } = props;
     const { projectLanguages, instance, language } = useContext(ProjectContext);
@@ -97,7 +100,7 @@ const ImportRasaFiles = (props) => {
                 )}
                 {filesWithErrors.length > 0 && (
                     <>
-                        <h4>The following files cannot be parsed and will be ignored:</h4>
+                        <h4>{i18n.__('ignored_files')}</h4>
                         {filesWithErrors.map(f => (
                             <Message color='red' key={`errors-${f.name}`}>
                                 <Message.Header>{f.name}</Message.Header>
@@ -108,7 +111,7 @@ const ImportRasaFiles = (props) => {
                 )}
                 {filesWithWarnings.length > 0 && (
                     <>
-                        <h4>The following files have warnings associated with them:</h4>
+                        <h4>{i18n.__('warning_files')}</h4>
                         {filesWithWarnings.map(f => (
                             <Message color='yellow' key={`warnings-${f.name}`}>
                                 <Message.Header>{f.name}</Message.Header>
@@ -138,7 +141,7 @@ const ImportRasaFiles = (props) => {
             <Segment
                 className={`import-box ${
                     canDrop && isOver && !importingState ? 'upload-target' : ''
-                }`}
+                    }`}
                 key={`import-${title}`}
             >
                 <div
@@ -150,59 +153,59 @@ const ImportRasaFiles = (props) => {
                             <Loader>{`Importing ${title}...`}</Loader>
                         </Dimmer>
                     ) : (
-                        <>
-                            <div className='side-by-side'>
-                                <h3>
-                                    {`Import ${title.replace(/^\w/, c => c.toUpperCase())}`}
-                                </h3>
-                                <div>
-                                    <Popup
-                                        content={tooltip}
-                                        inverted
-                                        trigger={(
-                                            <Icon
-                                                name='question circle'
-                                                color='grey'
-                                                size='large'
-                                            />
-                                        )}
-                                    />
-                                </div>
-                            </div>
-                            <input
-                                type='file'
-                                ref={fileField}
-                                style={{ display: 'none' }}
-                                multiple
-                                onChange={e => handleFileDrop(e.target.files, fileReader)
-                                }
-                            />
-                            {fileReader[0].length ? (
-                                renderFileList(fileReader)
-                            ) : (
-                                <>
-                                    <div className='align-center'>
-                                        <Icon
-                                            name={icon}
-                                            size='huge'
-                                            color='grey'
-                                            style={{ marginBottom: '8px' }}
+                            <>
+                                <div className='side-by-side'>
+                                    <h3>
+                                        {`Import ${title.replace(/^\w/, c => c.toUpperCase())}`}
+                                    </h3>
+                                    <div>
+                                        <Popup
+                                            content={tooltip}
+                                            inverted
+                                            trigger={(
+                                                <Icon
+                                                    name='question circle'
+                                                    color='grey'
+                                                    size='large'
+                                                />
+                                            )}
                                         />
-                                        <Button
-                                            primary
-                                            basic
-                                            content={`Upload ${title}`}
-                                            size='small'
-                                            onClick={() => fileField.current.click()}
-                                        />
-                                        <span className='small grey'>
-                                            or drop files to upload
-                                        </span>
                                     </div>
-                                </>
-                            )}
-                        </>
-                    )}
+                                </div>
+                                <input
+                                    type='file'
+                                    ref={fileField}
+                                    style={{ display: 'none' }}
+                                    multiple
+                                    onChange={e => handleFileDrop(e.target.files, fileReader)
+                                    }
+                                />
+                                {fileReader[0].length ? (
+                                    renderFileList(fileReader)
+                                ) : (
+                                        <>
+                                            <div className='align-center'>
+                                                <Icon
+                                                    name={icon}
+                                                    size='huge'
+                                                    color='grey'
+                                                    style={{ marginBottom: '8px' }}
+                                                />
+                                                <Button
+                                                    primary
+                                                    basic
+                                                    content={`Upload ${title}`}
+                                                    size='small'
+                                                    onClick={() => fileField.current.click()}
+                                                />
+                                                <span className='small grey'>
+                                                    or drop files to upload
+                                        </span>
+                                            </div>
+                                        </>
+                                    )}
+                            </>
+                        )}
                 </div>
             </Segment>
         );
@@ -241,8 +244,7 @@ const ImportRasaFiles = (props) => {
             icon: 'book',
             tooltip: (
                 <p>
-                    Import stories, one story group per file. The contents of existing
-                    story groups is never overwritten.
+                    {i18n.__('story_import')}
                 </p>
             ),
         },
@@ -259,18 +261,14 @@ const ImportRasaFiles = (props) => {
             tooltip: (
                 <>
                     <p>
-                        Import slots and bot response responses. Existing slots and
-                        responses are completely overwritten. Slots in your current
-                        default domain are not imported.
+                        {i18n.__('slot_import')}
                     </p>
 
                     <p>
-                        Actions and forms are not currently imported. If your actions and
-                        forms are mentioned in stories, they will automatically be
-                        infered on training.
+                        {i18n.__('action_import')}
                     </p>
 
-                    <p>For more information, read the docs.</p>
+                    <p>{i18n.__('read_doc')}</p>
                 </>
             ),
         },
@@ -287,8 +285,7 @@ const ImportRasaFiles = (props) => {
             tooltip: (
                 <>
                     <p>
-                        Import NLU examples, synonyms and gazettes. Items are added to
-                        your current collection.
+                        {i18n.__('nlu_import')}
                     </p>
                 </>
             ),
@@ -349,25 +346,21 @@ const ImportRasaFiles = (props) => {
                             content={(
                                 <>
                                     <p>
-                                        Bot responses found in domain files will use the
-                                        &apos;language&apos; attribute if it exists; if
-                                        not, the fallback import language will be used.
+                                        {i18n.__('how_to_set_import_lang_bot_responce')}
                                     </p>
 
                                     <p>
-                                        Likewise, the language of a NLU file can be
-                                        specified in its first line; if it isn&apos;t, the
-                                        fallback import language will be used.
+                                        {i18n.__('how_to_set_import_lang_nlu')}
                                     </p>
 
-                                    <p>For more information, read the docs.</p>
+                                    <p>{i18n.__('read_doc')}</p>
                                 </>
                             )}
                             inverted
                             trigger={(
                                 <div>
                                     <Icon name='question circle' />
-                                    <strong>Fallback import language: </strong>
+                                    <strong>{i18n.__('fallback_import_lang')}</strong>
                                 </div>
                             )}
                         />

@@ -13,6 +13,9 @@ import PropTypes from 'prop-types';
 import { GlobalSettings } from '../../../api/globalSettings/globalSettings.collection';
 import { wrapMeteorCallback } from '../utils/Errors';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class ForgotPassword extends React.Component {
     forgotPasswordFormSchema = new SimpleSchema(
         {
@@ -52,7 +55,7 @@ class ForgotPassword extends React.Component {
                             <br />
                         </div>
                     )}
-                    <SubmitField value='Continue' className='black large basic fluid' disabled={reCatpchaSiteKey && !reCaptcha} />
+                    <SubmitField value={i18n.__('continues')} className='black large basic fluid' disabled={reCatpchaSiteKey && !reCaptcha} />
                     <br />
                     <Link style={{ color: '#000' }} to='/login'>
                         Back to Sign in
@@ -62,7 +65,7 @@ class ForgotPassword extends React.Component {
         );
     };
 
-    renderSent = () => <Message positive header='Check your email inbox' content='If you have an account with us, you will find the instructions to reset your password in your inbox' />;
+    renderSent = () => <Message positive header={i18n.__('check_email')} content={i18n.__('reset_password_help')} />;
 
     onCaptcha = (reCaptcha) => {
         Meteor.call(

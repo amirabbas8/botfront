@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { saveAs } from 'file-saver';
 
+import i18n from 'meteor/universe:i18n';
+
 import {
     Dropdown, Button, Message, Icon, Confirm,
 } from 'semantic-ui-react';
@@ -188,11 +190,11 @@ const ImportProject = ({
                 <>
                     <Button.Group>
                         <Button onClick={() => { backupProject(true); setIncludeConvos(true); }} className='export-option' data-cy='export-with-conversations'>
-                            Download backup with conversations
+                        Download backup with conversations
                         </Button>
                         <Button.Or />
                         <Button onClick={() => { backupProject(false); setIncludeConvos(false); }} className='export-option' data-cy='export-without-conversations'>
-                            Download backup without conversations
+                        Download backup without conversations
                         </Button>
                         <Button.Or />
                         <Button onClick={() => setConfirmSkipOpen(true)} className='export-option' data-cy='skip' negative>Skip</Button>

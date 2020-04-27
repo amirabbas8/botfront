@@ -14,6 +14,9 @@ import SaveButton from '../utils/SaveButton';
 import AceField from '../utils/AceField';
 import { Can, can } from '../../../lib/scopes';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class CorePolicy extends React.Component {
     constructor(props) {
         super(props);
@@ -67,7 +70,7 @@ class CorePolicy extends React.Component {
                         onDismiss={() => this.setState({ saved: false, showConfirmation: false })}
                         content={(
                             <p>
-                                You need to retrain your model
+                                {i18n.__('need_retrain')}
                             </p>
                         )}
                     />

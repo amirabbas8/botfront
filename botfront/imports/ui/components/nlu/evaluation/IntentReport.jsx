@@ -2,8 +2,11 @@ import ReactTable from "react-table-v6";
 import PropTypes from "prop-types";
 import React from "react";
 import matchSorter from "match-sorter";
-import {Icon, Label, Popup, Tab} from "semantic-ui-react";
+import { Icon, Label, Popup, Tab } from "semantic-ui-react";
 import IntentMetrics from "./KeyMetrics";
+
+import i18n from 'meteor/universe:i18n';
+
 
 
 export default class IntentReport extends React.Component {
@@ -40,15 +43,15 @@ export default class IntentReport extends React.Component {
 
     render() {
         return <div>
-            <br/>
+            <br />
             <IntentMetrics
                 accuracy={this.props.accuracy}
                 precision={this.props.precision}
                 f1={this.props.f1_score}
             />
-            <br/>
-            <br/>
-            <Tab menu={{pointing: true, secondary: true}} panes={this.getIntentPanes()}/>
+            <br />
+            <br />
+            <Tab menu={{ pointing: true, secondary: true }} panes={this.getIntentPanes()} />
         </div>
     }
 
@@ -58,14 +61,14 @@ export default class IntentReport extends React.Component {
                 menuItem: 'Intent Misclassification',
                 render: () => <div>
                     {this.getPredictionsData(true).length > 0 &&
-                    <ReactTable
-                        data={this.getPredictionsData(true)}
-                        columns={this.getPredictionsColumns(true)}/>
+                        <ReactTable
+                            data={this.getPredictionsData(true)}
+                            columns={this.getPredictionsColumns(true)} />
                     }
                 </div>
             },
             {
-                menuItem:'Detailed Report',
+                menuItem: 'Detailed Report',
                 render: () => <ReactTable
                     data={this.getReportData()}
                     filterable
@@ -84,15 +87,15 @@ export default class IntentReport extends React.Component {
                 accessor: 'intent',
                 Header: "Intent",
                 filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value, {keys: ["intent"]}),
+                    matchSorter(rows, filter.value, { keys: ["intent"] }),
                 className: "left",
                 filterAll: true
             },
             {
                 accessor: 'f1',
                 Header: () => (
-                    <div>F1-Score <Popup trigger={<Icon name='question circle' color="grey"/>}
-                                         content="A more general measure of the quality of your model based on precision and accuracy"/>
+                    <div>F1-Score <Popup trigger={<Icon name='question circle' color="grey" />}
+                        content={i18n.__('f1_score_help')} />
                     </div>
                 ),
                 className: "right",
@@ -102,8 +105,8 @@ export default class IntentReport extends React.Component {
             {
                 accessor: 'precision',
                 Header: () => (
-                    <div>Precision <Popup trigger={<Icon name='question circle' color="grey"/>}
-                                          content="On 100 examples predicted 'greet', how many were actually labeled 'greet'" />
+                    <div>Precision <Popup trigger={<Icon name='question circle' color="grey" />}
+                        content={i18n.__('precision_help')} />
                     </div>
                 ),
                 className: "right",
@@ -113,8 +116,8 @@ export default class IntentReport extends React.Component {
             {
                 accessor: 'accuracy',
                 Header: () => (
-                    <div>Accuracy <Popup trigger={<Icon name='question circle' color="grey"/>}
-                                       content="On 100 examples labeled 'greet', how many were actually predicted 'greet'" />
+                    <div>Accuracy <Popup trigger={<Icon name='question circle' color="grey" />}
+                        content={i18n.__('accuracy_help')} />
                     </div>
                 ),
                 className: "right",
@@ -124,8 +127,8 @@ export default class IntentReport extends React.Component {
             {
                 accessor: 'support',
                 Header: () => (
-                    <div>Support <Popup trigger={<Icon name='question circle' color="grey"/>}
-                                        content='The number of examples for that intent'/></div>
+                    <div>Support <Popup trigger={<Icon name='question circle' color="grey" />}
+                        content={i18n.__('number_of_examples_of_intent')} /></div>
                 ),
                 className: "right",
                 filterable: false,
@@ -139,15 +142,15 @@ export default class IntentReport extends React.Component {
             {
                 accessor: 'text',
                 Header: "Text",
-                Cell: props => <div><Icon name="quote left" size="small"/>{props.value}</div>,
-                className:'left',
+                Cell: props => <div><Icon name="quote left" size="small" />{props.value}</div>,
+                className: 'left',
             },
             {
                 id: "intent",
                 accessor: r => r.intent,
                 Header: "Correct intent",
                 filterMethod: (filter, rows) => {
-                    return matchSorter(rows, filter.value, {keys: ["intent"]})
+                    return matchSorter(rows, filter.value, { keys: ["intent"] })
                 },
                 Cell: props => <div><Label basic>{props.value}</Label></div>,
                 filterAll: true,
@@ -158,14 +161,14 @@ export default class IntentReport extends React.Component {
                 accessor: r => r.predicted,
                 Header: "Predicted intent",
                 filterMethod: (filter, rows) => {
-                    return matchSorter(rows, filter.value, {keys: ["predicted"]})
+                    return matchSorter(rows, filter.value, { keys: ["predicted"] })
                 },
                 Cell: props => {
                     return <div>
                         {props.original.predicted === props.original.intent &&
-                        <div><Label basic>{props.value}</Label></div>}
+                            <div><Label basic>{props.value}</Label></div>}
                         {props.original.predicted !== props.original.intent &&
-                        <div><Label basic color='red'>{props.value ? props.value : 'None'}</Label></div>}
+                            <div><Label basic color='red'>{props.value ? props.value : 'None'}</Label></div>}
                     </div>
                 },
                 filterAll: true,

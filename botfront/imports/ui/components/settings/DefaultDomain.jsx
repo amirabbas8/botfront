@@ -13,6 +13,9 @@ import ChangesSaved from '../utils/ChangesSaved';
 import SaveButton from '../utils/SaveButton';
 import AceField from '../utils/AceField';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class DefaultDomain extends React.Component {
     constructor(props) {
         super(props);
@@ -50,15 +53,7 @@ class DefaultDomain extends React.Component {
                 <Message
                     info
                     icon='question circle'
-                    content={(
-                        <>
-                            You may put <b>actions</b> and <b>slots </b>
-                            in this domain which cannot be inferred from stories
-                            or slots defined in the <b>Stories</b> section. It will
-                            be merged with the generated domain at the time of
-                            training.
-                        </>
-                    )}
+                    content={i18n.__('default_domain_help')}
                 />
                 <AutoForm
                     disabled={saving}
@@ -73,7 +68,7 @@ class DefaultDomain extends React.Component {
                             onDismiss={() => this.setState({ saved: false, showConfirmation: false })}
                             content={(
                                 <p>
-                                    You need to retrain your model
+                                    {i18n.__()}You need to retrain your model
                                 </p>
                             )}
                         />

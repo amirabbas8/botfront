@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Popup } from 'semantic-ui-react';
 import IconButton from '../../common/IconButton';
 
+import i18n from 'meteor/universe:i18n';
+
+
 export default function ActivityActionsColumn(props) {
     const {
         datum,
@@ -27,7 +30,7 @@ export default function ActivityActionsColumn(props) {
             <Popup
                 size='mini'
                 inverted
-                content='Mark this utterance valid'
+                content={i18n.__('mark_utterance_valid')}
                 trigger={(
                     <IconButton
                         basic

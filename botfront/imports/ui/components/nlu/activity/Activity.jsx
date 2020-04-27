@@ -16,20 +16,23 @@ import { isTraining } from '../../../../api/nlu_model/nlu_model.utils';
 
 import PrefixDropdown from '../../common/PrefixDropdown';
 
+import i18n from 'meteor/universe:i18n';
+
+
 function Activity(props) {
     const [sortType, setSortType] = useState('Newest');
     const getSortFunction = () => {
         switch (sortType) {
-        case 'Newest':
-            return { sortKey: 'createdAt', sortDesc: true };
-        case 'Oldest':
-            return { sortKey: 'createdAt', sortDesc: false };
-        case '% ascending':
-            return { sortKey: 'confidence', sortDesc: false };
-        case '% decending':
-            return { sortKey: 'confidence', sortDesc: true };
-        default:
-            throw new Error('No such sort type');
+            case 'Newest':
+                return { sortKey: 'createdAt', sortDesc: true };
+            case 'Oldest':
+                return { sortKey: 'createdAt', sortDesc: false };
+            case '% ascending':
+                return { sortKey: 'confidence', sortDesc: false };
+            case '% decending':
+                return { sortKey: 'confidence', sortDesc: true };
+            default:
+                throw new Error('No such sort type');
         }
     };
 
@@ -204,12 +207,12 @@ function Activity(props) {
                         columns={columns}
                         data={data}
                         hasNextPage={hasNextPage}
-                        loadMore={loading ? () => {} : loadMore}
+                        loadMore={loading ? () => { } : loadMore}
                         onChangeInVisibleItems={handleChangeInVisibleItems}
                         className='new-utterances-table'
                     />
                 )
-                : <Message success icon='check' header='No activity' content='No activity was found for the given criteria.' />
+                : <Message success icon='check' header='No activity' content={i18n.__('no_activity_for_criteria')} />
             }
         </>
     );

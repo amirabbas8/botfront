@@ -22,6 +22,9 @@ import { setWorkingLanguage } from '../../store/actions/actions';
 import { updateIncomingPath } from './incoming.utils';
 import { WithRefreshOnLoad } from '../../layouts/project';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class Incoming extends React.Component {
     state = {
         activeTab: undefined,
@@ -59,15 +62,15 @@ class Incoming extends React.Component {
         } = this.props;
         return [
             {
-                menuItem: { content: 'New Utterances', key: 'newutterances', 'data-cy': 'newutterances' },
+                menuItem: { content: i18n.__('new_utterances'), key: 'newutterances', 'data-cy': 'newutterances' },
                 render: () => <Activity project={project} model={model} instance={instance} entities={entities} intents={intents} linkRender={this.linkToEvaluation} />,
             },
             {
-                menuItem: { content: 'Conversations', key: 'conversations', 'data-cy': 'conversations' },
+                menuItem: { content: i18n.__('conversations'), key: 'conversations', 'data-cy': 'conversations' },
                 render: () => <ConversationBrowser projectId={project._id} />,
             },
             {
-                menuItem: { content: 'Populate', key: 'populate', 'data-cy': 'populate' },
+                menuItem: { content: i18n.__('populate'), key: 'populate', 'data-cy': 'populate' },
                 render: () => <ActivityInsertions model={model} instance={instance} />,
             },
         ];
@@ -86,7 +89,7 @@ class Incoming extends React.Component {
         }
     }
 
-    render () {
+    render() {
         const {
             projectLanguages, ready, model, router, workingLanguage,
         } = this.props;

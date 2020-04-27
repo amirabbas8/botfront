@@ -13,6 +13,9 @@ import {
 import { wrapMeteorCallback } from '../utils/Errors';
 import { GlobalSettings } from '../../../api/globalSettings/globalSettings.collection';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class LoginComponent extends React.Component {
     loginFormSchema = new SimpleSchema(
         {
@@ -83,8 +86,8 @@ class LoginComponent extends React.Component {
                     <Segment className='account-block'>
                         <AutoForm model={{}} schema={this.loginFormSchemaBridge} onSubmit={this.handleLogin} className='ui large account-form' disabled={loggingIn}>
                             <ErrorsField />
-                            <TextField name='email' iconLeft='user' placeholder='Email' type='email' label={null} data-cy='login-field' />
-                            <TextField name='password' iconLeft='lock' placeholder='Password' type='password' label={null} data-cy='password-field' />
+                            <TextField name='email' iconLeft='user' placeholder={i18n.__('email')} type='email' label={null} data-cy='login-field' />
+                            <TextField name='password' iconLeft='lock' placeholder={i18n.__('password')} type='password' label={null} data-cy='password-field' />
                             {reCatpchaSiteKey && (
                                 <div>
                                     <ReCAPTCHA sitekey={reCatpchaSiteKey} onChange={this.onCaptcha} ref={reCaptchaRef} />

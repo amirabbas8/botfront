@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Widget } from 'rasa-webchat/module';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class Chat extends React.Component {
     // WARNING
     // Returns false, because for some uninvestigated reason, Widget creates
@@ -25,7 +28,7 @@ class Chat extends React.Component {
                 initPayload={initialPayLoad}
                 socketUrl={socketUrl}
                 socketPath={path}
-                inputTextFieldHint='Try out your chatbot...'
+                inputTextFieldHint={i18n.__('try_chatbot')}
                 hideWhenNotConnected={false}
                 customData={{ language }}
                 embedded

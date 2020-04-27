@@ -13,6 +13,9 @@ import { InstanceSchema } from '../../../api/instances/instances.schema';
 import { Instances as InstancesCollection } from '../../../api/instances/instances.collection';
 import { wrapMeteorCallback } from '../utils/Errors';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class Instances extends React.Component {
     onValidate = (model, error, callback) => {
         InstancesCollection.simpleSchema().clean(model);
@@ -22,7 +25,7 @@ class Instances extends React.Component {
     onSave = (updatedInstance) => {
         Meteor.call('instance.update', updatedInstance, wrapMeteorCallback((err) => {
             if (err) Alert.error(`Error: ${err.reason}`, { position: 'top-right', timeout: 'none' });
-        }, 'Changes Saved'));
+        }, i18n.__('changes_saved')));
     }
 
     render() {

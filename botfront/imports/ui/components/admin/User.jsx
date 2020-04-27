@@ -21,6 +21,9 @@ import { wrapMeteorCallback } from '../utils/Errors';
 import ChangePassword from './ChangePassword';
 import { PageMenu } from '../utils/Utils';
 
+import i18n from 'meteor/universe:i18n';
+
+
 class User extends React.Component {
     constructor(props) {
         super(props);
@@ -137,17 +140,17 @@ class User extends React.Component {
                                 </Segment> */}
                             </div>
                         ) : (
-                            <Segment>
-                                <AutoForm schema={UserCreateSchema} onSubmit={this.saveUser}>
-                                    <AutoField name='profile.firstName' />
-                                    <AutoField name='profile.lastName' />
-                                    <AutoField name='email' />
-                                    <AutoField name='sendEmail' />
-                                    <ErrorsField />
-                                    <SubmitField label='Create user' className='primary' />
-                                </AutoForm>
-                            </Segment>
-                        )}
+                                <Segment>
+                                    <AutoForm schema={UserCreateSchema} onSubmit={this.saveUser}>
+                                        <AutoField name='profile.firstName' />
+                                        <AutoField name='profile.lastName' />
+                                        <AutoField name='email' />
+                                        <AutoField name='sendEmail' />
+                                        <ErrorsField />
+                                        <SubmitField label={i18n.__('create_user')} className='primary' />
+                                    </AutoForm>
+                                </Segment>
+                            )}
                     </Container>
                 )}
             </>
