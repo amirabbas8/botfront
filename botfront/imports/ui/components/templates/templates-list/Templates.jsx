@@ -53,6 +53,11 @@ class Templates extends React.Component {
                     data-cy='add-quickreply-response'
                 />
                 <Dropdown.Item
+                    text={i18n.__('Carousel (deprecated)')}
+                    onClick={() => this.setState({ newResponse: { open: true, type: 'CarouselPayload' } })}
+                    data-cy='add-carousel-response'
+                />
+                <Dropdown.Item
                     text={i18n.__('Image')}
                     onClick={() => this.setState({ newResponse: { open: true, type: 'ImagePayload' } })}
                     data-cy='add-image-response'

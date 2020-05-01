@@ -1,6 +1,6 @@
 {
   "name": "botfront",
-  "version": "0.22.0-rc.2",
+  "version": "0.22.2",
   "repository": "https://github.com/botfront/botfront",
   "license": "AGPL-3.0-only",
   "scripts": {
@@ -132,6 +132,7 @@
     "license-checker": "^25.0.1",
     "selenium-webdriver": "3.6.0",
     "start-server-and-test": "^1.9.1",
+    "@storybook/addon-actions": "^5.3.18",
     "webpack": "^4.28.4"
   },
   "husky": {

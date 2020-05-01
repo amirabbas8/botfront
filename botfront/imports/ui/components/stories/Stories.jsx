@@ -133,6 +133,8 @@ function Stories(props) {
         setStoryEditorsKey(shortId.generate());
     };
 
+    const handleGetResponseLocations = (responses, f) => { Meteor.call('stories.includesResponse', projectId, responses, wrapMeteorCallback(f)); };
+
     return (
         <Loading loading={!ready}>
             <ConversationOptionsContext.Provider
@@ -148,6 +150,7 @@ function Stories(props) {
                     deleteStory: handleStoryDeletion,
                     updateStory: handleStoryUpdate,
                     reloadStories: handleReloadStories,
+                    getResponseLocations: handleGetResponseLocations,
                 }}
             >
                 {modalWrapper(

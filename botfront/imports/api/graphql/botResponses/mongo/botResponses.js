@@ -7,20 +7,27 @@ import { Stories } from '../../../story/stories.collection';
 import { addTemplateLanguage } from '../../../../lib/botResponse.utils';
 import { parsePayload } from '../../../../lib/storyMd.utils';
 
-const indexResponseContent = ({ text = '', custom = null, buttons = [] }) => {
-    const responseContent = [];
-    if (text.length > 0) responseContent.push(text.replace(/\n/, ' '));
-    if (custom) responseContent.push(safeDump(custom).replace(/\n/, ' '));
-    buttons.forEach(({ title = '', payload = '', url = '' }) => {
-        if (title.length > 0) responseContent.push(title);
-        if (payload.length > 0 && payload[0] === '/') {
-            const { intent, entities } = parsePayload(payload);
-            responseContent.push(intent);
-            entities.forEach(entity => responseContent.push(entity));
-        }
-        if (url.length > 0) responseContent.push(url);
-    });
-    return responseContent;
+const indexResponseContent = (input) => {
+    if (Array.isArray(input)) return input.reduce((acc, curr) => [...acc, ...indexResponseContent(curr)], []);
+    if (typeof input === 'object') {
+        let responseContent = [];
+        Object.keys(input).forEach((key) => {
+            if (typeof input[key] === 'string' && input[key].length > 0) {
+                if (['text', 'title', 'subtitle', 'url'].includes(key)) responseContent.push(input[key].replace(/\n/, ' '));
+                if (key === 'payload' && input[key][0] === '/') {
+                    const { intent, entities } = parsePayload(input[key]);
+                    responseContent.push(intent);
+                    entities.forEach(entity => responseContent.push(entity));
+                }
+            } else if (!input[key]) {
+                // pass on null values
+            } else {
+                responseContent = responseContent.concat(indexResponseContent(input[key]));
+            }
+        });
+        return responseContent;
+    }
+    return [];
 };
 
 export const indexBotResponse = (response) => {
@@ -220,7 +227,7 @@ export const newGetBotResponses = async ({
 
 
 export const deleteResponsesRemovedFromStories = (removedResponses, projectId) => {
-    const sharedResponses = Stories.find({ events: { $in: removedResponses } }, { fields: { events: true } }).fetch();
+    const sharedResponses = Stories.find({ projectId, events: { $in: removedResponses } }, { fields: { events: true } }).fetch();
     if (removedResponses && removedResponses.length > 0) {
         const deleteResponses = removedResponses.filter((event) => {
             if (!sharedResponses) return true;
