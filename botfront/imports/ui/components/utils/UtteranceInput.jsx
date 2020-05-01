@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 function UtteranceInput({
     placeholder, size, value, onValidate, fluid, onChange, excludedTargets, onDelete,

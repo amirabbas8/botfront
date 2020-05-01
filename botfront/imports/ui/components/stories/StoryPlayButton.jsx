@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Icon, Popup } from 'semantic-ui-react';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 import {
     setShowChat, setChatInitPayload, setShouldRefreshChat,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, Button } from 'semantic-ui-react';
 import { Link } from 'react-router';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 export default () => (
     <div style={{ textAlign: 'center' }}>

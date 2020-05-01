@@ -32,7 +32,7 @@ import {
     UPSERT_BOT_RESPONSE,
 } from './graphql';
 import apolloClient from '../../startup/client/apollo';
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const T = i18n.createComponent();
 
@@ -355,7 +355,7 @@ class Project extends React.Component {
                                                 trigger={
                                                     <Button size='big' circular onClick={() => changeShowChat(!showChat)} icon='comment' primary className='open-chat-button' data-cy='open-chat' />
                                                 }
-                                                content={i18n.__('Try out your chatbot')}
+                                                content={i18n.__('try_chatbot')}
                                             />
                                         )}
                                     </div>

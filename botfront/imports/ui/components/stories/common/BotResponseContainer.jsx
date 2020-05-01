@@ -5,7 +5,7 @@ import { Input, Button, Image } from 'semantic-ui-react';
 import TextareaAutosize from 'react-autosize-textarea';
 import QuickReplies from './QuickReplies';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const BotResponseContainer = (props) => {
     const {

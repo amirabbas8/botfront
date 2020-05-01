@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { entityPropType } from '../../utils/EntityUtils';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 // eslint-disable-next-line no-control-regex

@@ -4,7 +4,7 @@ import {
     Confirm, Dropdown, Button, Icon,
 } from 'semantic-ui-react';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const confirmations = {
@@ -58,7 +58,7 @@ export default function ActivityActions(props) {
                         labelPosition='left'
                         data-cy='process-in-bulk'
                     >
-                        <Icon name='angle double right' />{`Process ${numValidated > 0 ? numValidated : ''} validated utterance${numValidated === 1 ? '' : 's'}`}
+                        <Icon name='angle double right' />{i18n.__('process_validated_utterances', [numValidated > 0 ? numValidated : '', numValidated === 1 ? '' : 's'])}
                     </Button>
                 )}
                 disabled={!numValidated}

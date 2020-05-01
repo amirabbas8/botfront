@@ -16,7 +16,7 @@ import SelectField from '../form_fields/SelectField';
 import { getNluModelLanguages } from '../../../api/nlu_model/nlu_model.utils';
 import { languages } from '../../../lib/languages';
 
-import i18n from 'meteor/universe:i18n';
+import { i18n } from 'meteor/universe:i18n';
 
 
 class ProjectInfo extends React.Component {
@@ -57,7 +57,7 @@ class ProjectInfo extends React.Component {
         const { supportedLanguages } = this.state;
         // Check if the supported lanaguages are present in the newValue
         let renderNewValue = true;
-        supportedLanguages.forEach(function(language) {
+        supportedLanguages.forEach(function (language) {
             if (!newValue.includes(language)) {
                 renderNewValue = false;
             }
@@ -144,22 +144,22 @@ class ProjectInfo extends React.Component {
                         />
                         {projectsSchema
                             && projectsSchema.allowsKey('namespace') && (
-                            <InfoField
-                                name='namespace'
-                                label='Namespace'
-                                disabled
-                            />
-                        )}
+                                <InfoField
+                                    name='namespace'
+                                    label='Namespace'
+                                    disabled
+                                />
+                            )}
                         {projectsSchema
                             && projectsSchema.allowsKey('apiKey') && (
-                            <InfoField
-                                name='apiKey'
-                                label='Botfront API key'
-                                disabled
-                            />
-                        )}
+                                <InfoField
+                                    name='apiKey'
+                                    label='Botfront API key'
+                                    disabled
+                                />
+                            )}
                         <Form.Field>
-                            <label>Languages supported</label>
+                            <label>{i18n.__('languages_supported')}</label>
                             <Dropdown
                                 label='Select Languages'
                                 name='lang'
@@ -192,8 +192,8 @@ class ProjectInfo extends React.Component {
                         <ErrorsField />
                         <SubmitField
                             className='primary save-project-info-button'
-                            value='Save Changes'
-                            data-cy='save-changes'
+                            value={i18n.__('save_changes')}
+                            data-cy={i18n.__('save_changes')}
                         />
                     </AutoForm>
                 )}

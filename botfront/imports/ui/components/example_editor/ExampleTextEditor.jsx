@@ -6,6 +6,8 @@ import _, { find, sortBy } from 'lodash';
 import { examplePropType } from '../utils/ExampleUtils';
 import getColor from '../../../lib/getColors';
 
+import {i18n} from 'meteor/universe:i18n';
+
 const emptyExample = () => ({ text: '', intent: '', entities: [] });
 
 export class ExampleTextEditor extends React.Component {
@@ -55,7 +57,7 @@ export class ExampleTextEditor extends React.Component {
     insertEntity = (fields) => {
         const { example, example: { entities } = {} } = this.state;
         const { onChange } = this.props;
-        
+
         let entity = find(entities, { entity: '' });
         if (!entity) {
             entities.push({
@@ -63,7 +65,7 @@ export class ExampleTextEditor extends React.Component {
             });
             entity = find(entities, { entity: '' });
         }
-        
+
         Object.assign(entity, fields);
 
         this.setState({ example });
@@ -110,7 +112,7 @@ export class ExampleTextEditor extends React.Component {
                 changeBegin = i;
                 return true;
             }
-            
+
             return false;
         });
 
@@ -211,7 +213,7 @@ export class ExampleTextEditor extends React.Component {
                     className={inline ? 'inline-example-editor' : ''}
                     ref={(node) => { this.inputSelectionRef = node; }}
                     name='text'
-                    placeholder='User says...'
+                    placeholder={i18n.__('user_say')}
                     autoheight='true'
                     rows={(text && text.split('\n').length) || 1}
                     value={text}
@@ -239,11 +241,11 @@ ExampleTextEditor.propTypes = {
 
 ExampleTextEditor.defaultProps = {
     example: emptyExample(),
-    onChange: () => {},
+    onChange: () => { },
     onEnter: null,
     highlightEntities: true,
     inline: false,
-    onBlur: () => {},
+    onBlur: () => { },
     autofocus: false,
     disableNewEntities: false,
 };

@@ -6,7 +6,7 @@ import yamljs from 'js-yaml';
 import cloneDeep from 'lodash/cloneDeep';
 import { examples } from './templateExamples';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const messageTypesOptions = [
     { value: 0, text: i18n.__('Text') },

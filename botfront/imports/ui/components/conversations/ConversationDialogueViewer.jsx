@@ -7,7 +7,7 @@ import { Comment, Label, Message } from 'semantic-ui-react';
 import UserUtteredEventViewer from '../example_editor/UserUtteredEventViewer';
 import ExampleUtils from '../utils/ExampleUtils';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 function BotResponse({

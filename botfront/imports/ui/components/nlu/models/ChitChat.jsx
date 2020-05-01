@@ -10,7 +10,7 @@ import 'react-s-alert/dist/s-alert-default.css';
 
 import { wrapMeteorCallback } from '../../utils/Errors';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 export default class ChitChat extends React.Component {

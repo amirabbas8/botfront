@@ -7,7 +7,7 @@ import {
 import IntentLabel from '../common/IntentLabel';
 import SaveButton from '../../utils/SaveButton';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class IntentBulkInsert extends React.Component {

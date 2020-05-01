@@ -7,7 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SelectField from '../nlu/common/SelectLanguage';
 import { newProjectSchema } from '../../../api/setup';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class StepProjectComponent extends React.Component {

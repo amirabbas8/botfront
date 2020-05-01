@@ -26,7 +26,7 @@ import {
 } from '../../../../api/project/response.schema';
 import { examples } from './templateExamples';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const getExamples = i => (
     <SyntaxHighlighter style={github} language='yaml'>

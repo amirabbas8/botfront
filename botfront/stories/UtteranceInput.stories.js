@@ -5,6 +5,9 @@ import {
 } from '@storybook/addon-knobs';
 import UtteranceInput from '../imports/ui/components/utils/UtteranceInput';
 
+
+import {i18n} from 'meteor/universe:i18n';
+
 function UtteranceInputWrapped(props) {
     const [utterance, setUtterance] = useState('');
     return (
@@ -16,7 +19,7 @@ storiesOf('UtteranceInput', module)
     .addDecorator(withKnobs)
     .add('with props', () => (
         <UtteranceInputWrapped
-            placeholder={text('placeholder', 'User says')}
+            placeholder={text('placeholder', i18n.__('user_say'))}
             size={select(
                 'size',
                 ['mini', 'small', 'medium', 'large', 'big', 'huge', 'massive'],

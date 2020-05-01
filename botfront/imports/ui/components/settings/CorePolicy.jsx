@@ -14,7 +14,7 @@ import SaveButton from '../utils/SaveButton';
 import AceField from '../utils/AceField';
 import { Can, can } from '../../../lib/scopes';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class CorePolicy extends React.Component {

@@ -27,7 +27,6 @@ import { GET_BOT_RESPONSE, GET_BOT_RESPONSES, GET_BOT_RESPONSE_BY_ID } from '../
 import { CREATE_BOT_RESPONSE, UPDATE_BOT_RESPONSE } from '../mutations';
 import { Loading } from '../../utils/Utils';
 import { clearTypenameField } from '../../../../lib/client.safe.utils';
-
 function Template(props) {
     const {
         workingLanguage,

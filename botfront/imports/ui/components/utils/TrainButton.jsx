@@ -9,7 +9,7 @@ import 'react-s-alert/dist/s-alert-default.css';
 import { isTraining } from '../../../api/nlu_model/nlu_model.utils';
 import { StoryGroups } from '../../../api/storyGroups/storyGroups.collection';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class TrainButton extends React.Component {

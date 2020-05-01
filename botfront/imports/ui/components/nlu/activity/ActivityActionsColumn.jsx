@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Popup } from 'semantic-ui-react';
 import IconButton from '../../common/IconButton';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 export default function ActivityActionsColumn(props) {

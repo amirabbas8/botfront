@@ -9,7 +9,7 @@ import { ProjectContext } from '../../../layouts/context';
 import UtteranceInput from '../../utils/UtteranceInput';
 import NluEditor from './nlu_editor/NluEditor';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const UtteranceContainer = (props) => {

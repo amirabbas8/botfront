@@ -10,7 +10,7 @@ import Chat from './Chat';
 import { getLanguagesFromProjectId } from '../../../lib/utils';
 import { setShouldRefreshChat } from '../../store/actions/actions';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class ProjectChat extends React.Component {

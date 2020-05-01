@@ -16,7 +16,7 @@ import {
 import { languages } from '../../../../lib/languages';
 import BotResponseEditor from './BotResponseEditor';
 
-import i18n from 'meteor/universe:i18n';
+import { i18n } from 'meteor/universe:i18n';
 
 class TemplatesTable extends React.Component {
     constructor(props) {
@@ -186,6 +186,13 @@ class TemplatesTable extends React.Component {
                 {/* <br /> */}
                 <br />
                 <ReactTable
+                    previousText={i18n.__('previous')}
+                    nextText={i18n.__('next')}
+                    loadingText='Loading...'
+                    noDataText='No rows found'
+                    pageText={i18n.__('page')}
+                    ofText={i18n.__('of')}
+                    rowsText={i18n.__('rows')}
                     style={{ background: '#fff' }}
                     data={templates}
                     columns={this.getColumns(lang)}

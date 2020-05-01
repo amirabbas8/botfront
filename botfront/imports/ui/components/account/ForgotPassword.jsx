@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { GlobalSettings } from '../../../api/globalSettings/globalSettings.collection';
 import { wrapMeteorCallback } from '../utils/Errors';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class ForgotPassword extends React.Component {

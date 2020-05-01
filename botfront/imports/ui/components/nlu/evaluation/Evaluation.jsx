@@ -25,7 +25,7 @@ import { Loading } from '../../utils/Utils';
 
 import 'react-select/dist/react-select.css';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 

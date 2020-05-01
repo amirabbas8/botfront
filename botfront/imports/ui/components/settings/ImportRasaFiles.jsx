@@ -33,7 +33,7 @@ import {
 } from './fileImporters';
 import { ProjectContext } from '../../layouts/context';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const ImportRasaFiles = (props) => {

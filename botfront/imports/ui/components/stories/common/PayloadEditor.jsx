@@ -7,7 +7,7 @@ import IconButton from '../../common/IconButton';
 import DashedButton from './DashedButton';
 import { ProjectContext } from '../../../layouts/context';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const PayloadEditor = (props) => {
     const {

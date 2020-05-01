@@ -9,6 +9,7 @@ import AddLookupTableRow from './AddLookupTableRow';
 import LookupTableValueEditorViewer from './LookupTableValueEditorViewer';
 import LookupTableEditorViewer from './LookupTableListEditorViewer';
 import IconButton from '../common/IconButton';
+import { i18n } from 'meteor/universe:i18n';
 
 export default class LookupTable extends React.Component {
     getColumns() {
@@ -87,6 +88,13 @@ export default class LookupTable extends React.Component {
                 <br />
                 <div className='glow-box extra-padding no-margin'>
                     <ReactTable
+                        previousText={i18n.__('previous')}
+                        nextText={i18n.__('next')}
+                        loadingText='Loading...'
+                        noDataText='No rows found'
+                        pageText={i18n.__('page')}
+                        ofText={i18n.__('of')}
+                        rowsText={i18n.__('rows')}
                         data={data}
                         minRows={1}
                         columns={this.getColumns()}

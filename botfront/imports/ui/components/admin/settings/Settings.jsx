@@ -16,7 +16,7 @@ import AceField from '../../utils/AceField';
 import { wrapMeteorCallback } from '../../utils/Errors';
 import { PageMenu } from '../../utils/Utils';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class Settings extends React.Component {
@@ -124,7 +124,7 @@ class Settings extends React.Component {
 
     renderSettings = (saving, settings, schema) => (
         <>
-            <PageMenu icon='setting' title='Global Settings' />
+            <PageMenu icon='setting' title={i18n.__('global_settings')} />
             <Container id='admin-settings' data-cy='admin-settings-menu'>
                 <AutoForm schema={new SimpleSchema2Bridge(schema)} model={settings} onSubmit={this.onSave} disabled={saving}>
                     <Tab menu={{ vertical: true }} grid={{ paneWidth: 13, tabWidth: 3 }} panes={this.getSettingsPanes()} />

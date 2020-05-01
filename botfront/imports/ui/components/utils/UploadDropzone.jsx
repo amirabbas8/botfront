@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { NativeTypes } from 'react-dnd-html5-backend-cjs';
 import { useDrop } from 'react-dnd-cjs';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 import {
     Message, Icon, Button, Segment,

@@ -15,6 +15,8 @@ import SearchBar from './search/SearchBar';
 
 import { ProjectContext } from '../../layouts/context';
 
+import {i18n} from 'meteor/universe:i18n';
+
 export default function StoriesPageMenu() {
     const {
         project,
@@ -23,7 +25,7 @@ export default function StoriesPageMenu() {
     } = useContext(ProjectContext);
 
     return (
-        <PageMenu title='Stories' icon='book' className='stories-page-menu'>
+        <PageMenu title={i18n.__('stories')} icon='book' className='stories-page-menu'>
             <Menu.Menu className='language-dropdown-menu'>
                 <Menu.Item id='stories-language-dropdown'>
                     <LanguageDropdown />

@@ -25,7 +25,7 @@ import { setWorkingLanguage } from '../../../../store/actions/actions';
 import ExampleUtils from '../../../utils/ExampleUtils';
 import { ConversationOptionsContext } from '../../Context';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const NLUModalContent = (props) => {

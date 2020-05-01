@@ -9,7 +9,7 @@ import { ConversationOptionsContext } from '../Context';
 import { ProjectContext } from '../../../layouts/context';
 import { slotValueToLabel } from '../SlotLabel';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const SlotPopupContent = (props) => {
     const {

@@ -32,7 +32,7 @@ import Project from '../../ui/layouts/project';
 import Index from '../../ui/components/index';
 import store from '../../ui/store/store';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const authenticateProject = (nextState, replace, callback) => {
     Tracker.autorun(() => {
@@ -82,7 +82,20 @@ const validateCanSetup = () => (nextState, replace, callback) => {
     });
 };
 
+getUserLanguage = function () {
+    var userLang = 'en';
+    if (Meteor.user()&& Meteor.user().profile.lang) {
+        userLang = Meteor.user().profile.lang;
+    }
+    return userLang;
+};
+
 Meteor.startup(() => {
+    Tracker.autorun(() => {
+        if (Meteor.user()) {
+            i18n.setLocale(getUserLanguage());
+        }
+    });
     render(
         <DocumentTitle title={i18n.__('app_name')}>
             <ApolloProvider client={apolloClient}>

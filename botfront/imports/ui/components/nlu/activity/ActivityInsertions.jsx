@@ -10,7 +10,7 @@ import {
 import { upsertActivity as upsertActivityMutation } from './mutations';
 import apolloClient from '../../../../startup/client/apollo';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 export async function populateActivity(instance, examples, modelId, callback) {

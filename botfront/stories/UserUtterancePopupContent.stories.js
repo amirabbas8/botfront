@@ -4,6 +4,8 @@ import { storiesOf } from '@storybook/react';
 import UserUtterancePopupContent from '../imports/ui/components/stories/common/UserUtterancePopupContent';
 import DashedButton from '../imports/ui/components/stories/common/DashedButton';
 
+import {i18n} from 'meteor/universe:i18n';
+
 const alertPayload = pl => alert(`
     Intent: ${pl.intent}
     ${pl.entities.length ? `Entities: ${pl.entities.map(e => `
@@ -11,7 +13,7 @@ const alertPayload = pl => alert(`
     ` : ''}
     `);
 
-const trigger = <DashedButton color='blue'>User says:</DashedButton>;
+const trigger = <DashedButton color='blue'>{i18n.__('user_say')}</DashedButton>;
 
 storiesOf('UserUtterancePopupContent', module)
     .add('default', () => (

@@ -13,7 +13,7 @@ import {
 import { wrapMeteorCallback } from '../utils/Errors';
 import { GlobalSettings } from '../../../api/globalSettings/globalSettings.collection';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class LoginComponent extends React.Component {

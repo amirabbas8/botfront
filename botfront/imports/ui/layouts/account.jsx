@@ -7,7 +7,7 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import { getBackgroundImageUrl } from '../../lib/utils';
 import { GlobalSettings } from '../../api/globalSettings/globalSettings.collection';
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class AccountLayout extends React.Component {

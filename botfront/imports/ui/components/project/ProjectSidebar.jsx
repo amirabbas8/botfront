@@ -10,7 +10,7 @@ import { Projects } from '../../../api/project/project.collection';
 import ProjectsDropdown from './ProjectsDropdown';
 import { GlobalSettings } from '../../../api/globalSettings/globalSettings.collection';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const packageJson = require('/package.json');
 
@@ -28,7 +28,7 @@ class ProjectSidebar extends React.Component {
                         <ProjectsDropdown currentProjectId={projectId} onProjectChange={handleChangeProject} />
                     </Menu.Item>
                     <Link to={`/project/${projectId}/stories`}>
-                        <Menu.Item name={i18n.__('Stories')} icon='book' data-cy='stories-sidebar-link' />
+                        <Menu.Item name={i18n.__('stories')} icon='book' data-cy='stories-sidebar-link' />
                     </Link>
                     <Link to={`/project/${projectId}/nlu/models`}>
                         <Menu.Item name={i18n.__('NLU')} icon='grid layout' data-cy='nlu-sidebar-link' />
@@ -40,7 +40,7 @@ class ProjectSidebar extends React.Component {
                         <Menu.Item name={i18n.__('Responses')} icon='comment' />
                     </Link>
                     <Link to={`/project/${projectId}/settings`}>
-                        <Menu.Item name={i18n.__('Settings')} icon='setting' />
+                        <Menu.Item name={i18n.__('settings')} icon='setting' />
                     </Link>
                     <a href={settingsReady ? settings.settings.public.docUrl : ''} target='_blank' rel='noopener noreferrer'>
                         <Menu.Item name={i18n.__('documentation')} icon='question' />

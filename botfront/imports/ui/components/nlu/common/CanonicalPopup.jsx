@@ -5,7 +5,7 @@ import { Popup, Icon } from 'semantic-ui-react';
 import UserUtteranceViewer from './UserUtteranceViewer';
 import { Context } from '../../../../../stories/CanonicalPopup.stories';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const CanonicalPopup = (props) => {

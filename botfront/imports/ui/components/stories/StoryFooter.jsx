@@ -10,6 +10,10 @@ import {
 import StoryPathPopup from './StoryPathPopup.jsx';
 import { ConversationOptionsContext } from './Context';
 
+import {i18n} from 'meteor/universe:i18n';
+
+import { from } from 'apollo-link';
+
 class StoryFooter extends React.Component {
     constructor(props) {
         super(props);
@@ -125,7 +129,7 @@ class StoryFooter extends React.Component {
                     name='code branch'
                     color={this.selectIconColor(canBranch)}
                 />
-                Branch Story
+                {i18n.__('')}
             </Menu.Item>
         );
     }
@@ -145,7 +149,7 @@ class StoryFooter extends React.Component {
             />
             Link&nbsp;to:
             <Dropdown
-                placeholder='Select story'
+                placeholder={i18n.__('select_story')}
                 value={destinationStory ? destinationStory._id : ''}
                 fluid
                 search

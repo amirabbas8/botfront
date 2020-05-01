@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu, Tab } from 'semantic-ui-react';
 import InfoField from '../../utils/InfoField';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 export default [

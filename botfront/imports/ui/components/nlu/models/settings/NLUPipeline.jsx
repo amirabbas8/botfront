@@ -14,7 +14,7 @@ import AceField from '../../../utils/AceField';
 import SaveButton from '../../../utils/SaveButton';
 import { Can, can } from '../../../../../lib/scopes';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 export default class NLUPipeline extends React.Component {

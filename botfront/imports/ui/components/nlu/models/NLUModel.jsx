@@ -43,8 +43,7 @@ import { Projects } from '../../../../api/project/project.collection';
 import { extractEntities } from './nluModel.utils';
 import { setWorkingLanguage } from '../../../store/actions/actions';
 import { WithRefreshOnLoad } from '../../../layouts/project';
-
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 class NLUModel extends React.Component {
     constructor(props) {
@@ -150,7 +149,7 @@ class NLUModel extends React.Component {
         } = this.state;
         const tabs = [
             {
-                menuItem: 'Examples',
+                menuItem: i18n.__('examples'),
                 render: () => (
                     <NluDataTable
                         onEditExample={this.onEditExample}
@@ -273,19 +272,19 @@ class NLUModel extends React.Component {
                     <Menu.Item header>{this.getHeader()}</Menu.Item>
                     <Menu.Item name='data' active={activeItem === 'data'} onClick={this.handleMenuItemClick} data-cy='nlu-menu-training-data'>
                         <Icon size='small' name='database' />
-                        Training Data
+                        {i18n.__('training_data')}
                     </Menu.Item>
                     <Menu.Item name='evaluation' active={activeItem === 'evaluation'} onClick={this.handleMenuItemClick} data-cy='nlu-menu-evaluation'>
                         <Icon size='small' name='percent' />
-                        Evaluation
+                        {i18n.__('evaluation')}
                     </Menu.Item>
                     <Menu.Item name='statistics' active={activeItem === 'statistics'} onClick={this.handleMenuItemClick} data-cy='nlu-menu-statistics'>
                         <Icon size='small' name='pie graph' />
-                        Statistics
+                        {i18n.__('statistics')}
                     </Menu.Item>
                     <Menu.Item name='settings' active={activeItem === 'settings'} onClick={this.handleMenuItemClick} data-cy='nlu-menu-settings'>
                         <Icon size='small' name='setting' />
-                        Settings
+                        {i18n.__('settings')}
                     </Menu.Item>
                     <Menu.Menu position='right'>
                         <Menu.Item>

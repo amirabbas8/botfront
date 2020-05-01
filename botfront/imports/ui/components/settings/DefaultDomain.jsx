@@ -13,7 +13,7 @@ import ChangesSaved from '../utils/ChangesSaved';
 import SaveButton from '../utils/SaveButton';
 import AceField from '../utils/AceField';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class DefaultDomain extends React.Component {
@@ -68,7 +68,7 @@ class DefaultDomain extends React.Component {
                             onDismiss={() => this.setState({ saved: false, showConfirmation: false })}
                             content={(
                                 <p>
-                                    {i18n.__()}You need to retrain your model
+                                    {i18n.__('need_retrain')}
                                 </p>
                             )}
                         />

@@ -9,6 +9,7 @@ export const UserEditSchema = new SimpleSchema({
     profile: Object,
     'profile.firstName': { type: String },
     'profile.lastName': { type: String },
+    'profile.lang': { type: String, autoValue: 'en' },
 }, { tracker: Tracker });
 
 export const UserCreateSchema = new SimpleSchema({
@@ -17,4 +18,5 @@ export const UserCreateSchema = new SimpleSchema({
     'profile.lastName': { type: String },
     email: { type: String, regEx: SimpleSchema.RegEx.Email },
     sendEmail: { type: Boolean, defaultValue: true },
+    'profile.lang': { type: String, autoValue: 'en' },
 }, { tracker: Tracker });

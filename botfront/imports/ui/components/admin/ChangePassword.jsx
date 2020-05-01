@@ -11,7 +11,7 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import { passwordComplexityRegex } from '../../../api/user/user.methods';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const changePasswordSchema = new SimpleSchema(

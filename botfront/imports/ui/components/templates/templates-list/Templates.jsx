@@ -16,6 +16,7 @@ import { Loading } from '../../utils/Utils';
 import { Stories } from '../../../../api/story/stories.collection';
 import { DELETE_BOT_RESPONSE } from '../mutations';
 import { ProjectContext } from '../../../layouts/context';
+import { i18n } from 'meteor/universe:i18n';
 
 
 class Templates extends React.Component {
@@ -32,7 +33,7 @@ class Templates extends React.Component {
 
     renderAddResponse = () => (
         <Dropdown
-            text='Add bot response'
+            text={i18n.__('add_bot_responce')}
             icon='plus'
             floating
             labeled
@@ -42,22 +43,22 @@ class Templates extends React.Component {
         >
             <Dropdown.Menu>
                 <Dropdown.Item
-                    text='Text'
+                    text={i18n.__('Text')}
                     onClick={() => this.setState({ newResponse: { open: true, type: 'TextPayload' } })}
                     data-cy='add-text-response'
                 />
                 <Dropdown.Item
-                    text='Quick replies'
+                    text={i18n.__('Text with buttons (quick replies)')}
                     onClick={() => this.setState({ newResponse: { open: true, type: 'QuickReplyPayload' } })}
                     data-cy='add-quickreply-response'
                 />
                 <Dropdown.Item
-                    text='Image'
+                    text={i18n.__('Image')}
                     onClick={() => this.setState({ newResponse: { open: true, type: 'ImagePayload' } })}
                     data-cy='add-image-response'
                 />
                 <Dropdown.Item
-                    text='Custom'
+                    text={i18n.__('custom')}
                     onClick={() => this.setState({ newResponse: { open: true, type: 'CustomPayload' } })}
                     data-cy='add-custom-response'
                 />
@@ -70,7 +71,7 @@ class Templates extends React.Component {
             <Menu.Item>
                 <Menu.Header as='h3'>
                     <Icon name='comment alternate' />
-                    Bot responses
+                    {i18n.__('bot_responses')}
                 </Menu.Header>
             </Menu.Item>
             <Menu.Menu position='right'>

@@ -12,7 +12,7 @@ import { Projects } from '../../../api/project/project.collection';
 
 import { getNluModelLanguages } from '../../../api/nlu_model/nlu_model.utils';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const ExportProject = ({
@@ -21,15 +21,15 @@ const ExportProject = ({
     const getExportTypeOptions = () => [
         {
             key: 'botfront',
-            text: i18n.__('export_app',[i18n.__('app_name')]),
+            text: i18n.__('export_app', [i18n.__('app_name')]),
             value: 'botfront',
-            successText: i18n.__('export_app_success',[i18n.__('app_name')]),
+            successText: i18n.__('export_app_success', [i18n.__('app_name')]),
         },
         {
             key: 'rasa',
             text: i18n.__('export_rasa'),
             value: 'rasa',
-            successText: i18n.__('export_rasa_success']),
+            successText: i18n.__('export_rasa_success'),
         },
     ];
     const [exportType, setExportType] = useState(getExportTypeOptions()[1]);
@@ -265,7 +265,7 @@ const ExportProject = ({
                             <>
                                 <h5>NLU pipeline</h5>
                                 <p>
-                                Consider removing Botfront specific NLU components,
+                                    Consider removing Botfront specific NLU components,
                                     such as{' '}
                                     <b className='monospace'>
                                         rasa_addons.nlu.components.gazette.Gazette
@@ -274,7 +274,7 @@ const ExportProject = ({
                                 </p>
                                 <h5>Credentials and endpoints</h5>
                                 <p>
-                                In most cases, you do not need to change credentials
+                                    In most cases, you do not need to change credentials
                                     or endpoints. If you need to keep credentials from
                                     Botfront, be sure to keep the{' '}
                                     <b className='monospace'>rasa</b> and{' '}

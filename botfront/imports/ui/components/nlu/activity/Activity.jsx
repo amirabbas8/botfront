@@ -16,7 +16,7 @@ import { isTraining } from '../../../../api/nlu_model/nlu_model.utils';
 
 import PrefixDropdown from '../../common/PrefixDropdown';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 function Activity(props) {
@@ -188,10 +188,10 @@ function Activity(props) {
                 selection={sortType}
                 updateSelection={option => setSortType(option.value)}
                 options={[
-                    { value: 'Newest', text: 'Newest' },
-                    { value: 'Oldest', text: 'Oldest' },
-                    { value: '% ascending', text: '% ascending' },
-                    { value: '% decending', text: '% decending' },
+                    { value: 'Newest', text: i18n.__('newest') },
+                    { value: 'Oldest', text: i18n.__('oldest') },
+                    { value: '% ascending', text: i18n.__('ascending') },
+                    { value: '% decending', text: i18n.__('decending') },
                 ]}
                 prefix='Sort by'
             />
@@ -212,7 +212,7 @@ function Activity(props) {
                         className='new-utterances-table'
                     />
                 )
-                : <Message success icon='check' header='No activity' content={i18n.__('no_activity_for_criteria')} />
+                : <Message success icon='check' header={i18n.__('no_activity')} content={i18n.__('no_activity_for_criteria')} />
             }
         </>
     );

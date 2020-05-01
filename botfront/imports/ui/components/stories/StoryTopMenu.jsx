@@ -12,7 +12,7 @@ import {
 } from '../../store/actions/actions';
 import { ConversationOptionsContext } from './Context';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const StoryTopMenu = ({
     storyId,

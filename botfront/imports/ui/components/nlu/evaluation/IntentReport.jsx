@@ -5,7 +5,7 @@ import matchSorter from "match-sorter";
 import { Icon, Label, Popup, Tab } from "semantic-ui-react";
 import IntentMetrics from "./KeyMetrics";
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 

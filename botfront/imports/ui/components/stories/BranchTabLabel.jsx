@@ -6,7 +6,7 @@ import React from 'react';
 import ConfirmPopup from '../common/ConfirmPopup';
 import ToolTipPopup from '../common/ToolTipPopup';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 class BranchTabLabel extends React.Component {
     constructor(props) {

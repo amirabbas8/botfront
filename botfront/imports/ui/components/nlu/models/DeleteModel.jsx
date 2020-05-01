@@ -9,7 +9,7 @@ import { saveAs } from 'file-saver';
 import moment from 'moment';
 import { getTrainingDataInRasaFormat } from '../../../../api/instances/instances.methods';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 export default class DeleteModel extends React.Component {

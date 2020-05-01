@@ -21,7 +21,7 @@ import { wrapMeteorCallback } from '../utils/Errors';
 import ChangePassword from './ChangePassword';
 import { PageMenu } from '../utils/Utils';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class User extends React.Component {
@@ -126,7 +126,7 @@ class User extends React.Component {
         const { user, ready } = this.props;
         return (
             <>
-                <PageMenu icon='users' title={!!user ? 'Edit user' : 'New user'} />
+                <PageMenu icon='users' title={!!i18n.__(user ? 'edit_user' : 'new_user')} />
                 {ready && (
                     <Container>
                         {!!user ? (

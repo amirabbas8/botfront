@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Input, Dropdown } from 'semantic-ui-react';
 import getColor from '../../../../lib/getColors';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 export default class Filters extends React.Component {

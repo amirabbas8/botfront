@@ -13,7 +13,7 @@ import { InstanceSchema } from '../../../api/instances/instances.schema';
 import { Instances as InstancesCollection } from '../../../api/instances/instances.collection';
 import { wrapMeteorCallback } from '../utils/Errors';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class Instances extends React.Component {

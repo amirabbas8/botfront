@@ -9,7 +9,7 @@ import StepProject from './StepProject';
 import StepConsent from './StepConsent';
 import { wrapMeteorCallback } from '../utils/Errors';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 class SetupSteps extends React.Component {
     constructor(props) {

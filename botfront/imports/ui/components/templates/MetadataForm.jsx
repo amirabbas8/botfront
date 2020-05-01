@@ -6,7 +6,7 @@ import {
 import ToggleField from '../common/ToggleField';
 import SelectField from '../form_fields/SelectField';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 // force open affect force close and vice versa

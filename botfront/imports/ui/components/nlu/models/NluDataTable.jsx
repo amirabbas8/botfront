@@ -17,7 +17,7 @@ import IconButton from '../../common/IconButton';
 import UserUtteranceViewer from '../common/UserUtteranceViewer';
 import { ExampleTextEditor } from '../../example_editor/ExampleTextEditor';
 
-import i18n from 'meteor/universe:i18n';
+import { i18n } from 'meteor/universe:i18n';
 
 
 export default class NluDataTable extends React.Component {
@@ -92,7 +92,7 @@ export default class NluDataTable extends React.Component {
         intentColumns = intentColumns || [
             {
                 accessor: 'intent',
-                Header: 'Intent',
+                Header: i18n.__('intent'),
                 width: 200,
                 filterMethod: (filter, rows) => matchSorter(rows, filter.value, { keys: ['intent'] }),
                 Cell: props => this.canonicalTooltip(
@@ -120,7 +120,7 @@ export default class NluDataTable extends React.Component {
                 sortMethod: (a, b) => a.text.localeCompare(b.text),
                 sortable: true,
                 accessor: e => e,
-                Header: 'Example',
+                Header: i18n.__('example'),
                 Cell: (props) => {
                     const canonical = props.row.example.canonical ? props.row.example.canonical : false;
                     const { editExampleMode } = this.state;
@@ -356,6 +356,13 @@ export default class NluDataTable extends React.Component {
                 )}
                 <div className='glow-box extra-padding no-margin'>
                     <ReactTable
+                        previousText={i18n.__('previous')}
+                        nextText={i18n.__('next')}
+                        loadingText='Loading...'
+                        noDataText='No rows found'
+                        pageText={i18n.__('page')}
+                        ofText={i18n.__('of')}
+                        rowsText={i18n.__('rows')}
                         data={this.getExamples()}
                         onFilteredChange={this.collapseExpanded}
                         onSortedChange={this.collapseExpanded}

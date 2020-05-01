@@ -15,7 +15,7 @@ import ConversationViewer from './ConversationViewer';
 import { Loading } from '../utils/Utils';
 import { updateIncomingPath } from '../incoming/incoming.utils';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 
@@ -147,7 +147,7 @@ function ConversationsBrowser(props) {
                     </Grid.Column>
                 </Grid>
             ) : (
-                    <Message data-cy='no-conv' info>{i18n.__()}No conversation to load</Message>
+                    <Message data-cy='no-conv' info>{i18n.__('no_conversation_to_load')}</Message>
                 )}
         </div>
     );

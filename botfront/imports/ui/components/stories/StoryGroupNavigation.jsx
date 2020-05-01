@@ -9,6 +9,8 @@ import { setStoryMode } from '../../store/actions/actions';
 import { Slots } from '../../../api/slots/slots.collection';
 import { ConversationOptionsContext } from './Context';
 
+import {i18n} from 'meteor/universe:i18n';
+
 class StoryGroupNavigation extends React.Component {
     constructor(props) {
         super(props);
@@ -88,23 +90,23 @@ class StoryGroupNavigation extends React.Component {
                             content={<Icon name='add' />}
                             style={{ width: 0 }}
                         />,
-                        'New story group',
+                        i18n.__('new_story_group'),
                     )}
                     {this.tooltipWrapper(
                         <Button
-                            content='Slots'
+                            content={i18n.__('slots')}
                             onClick={() => modals.setSlotsModal(true)}
                             data-cy='slots-modal'
                         />,
-                        'Manage slots',
+                        i18n.__('manage_slots'),
                     )}
                     {this.tooltipWrapper(
                         <Button
-                            content='Policies'
+                            content={i18n.__('policies')}
                             onClick={() => modals.setPoliciesModal(true)}
                             data-cy='policies-modal'
                         />,
-                        'Edit Policies',
+                        i18n.__('manage_policies'),
                     )}
                     {this.tooltipWrapper(
                         <Button
@@ -114,7 +116,7 @@ class StoryGroupNavigation extends React.Component {
                         >
                             <Icon name={storyMode === 'visual' ? 'code' : 'commenting'} />
                         </Button>,
-                        storyMode === 'visual' ? 'Switch to Markdown edit mode' : 'Switch to visual edit mode',
+                        i18n.__(storyMode === 'visual' ? 'switch_to_markdown_edit' : 'switch_to_visual_edit'),
                     )}
                 </Button.Group>
             </div>

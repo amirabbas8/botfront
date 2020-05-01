@@ -20,7 +20,7 @@ import StoryEditors from './StoryEditors';
 import { Loading } from '../utils/Utils';
 import { can } from '../../../lib/scopes';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 const SlotsEditor = React.lazy(() => import('./Slots'));
 const PoliciesEditor = React.lazy(() => import('../settings/CorePolicy'));
@@ -36,10 +36,10 @@ const isStoryDeletable = (story, stories, tree) => {
     const message = deletable
         ? story.canBearChildren
             ? i18n.__('story_group_delete_confirm', [story.title])
-            : i18n.__('story_delete_confirm')
+            : i18n.__('story_delete_confirm', [story.title])
         : story.canBearChildren
-            ? i18n.__('story_group_delete_not_possible',[story.title])
-            : i18n.__('story_delete_not_possible',[story.title]);
+            ? i18n.__('story_group_delete_not_possible', [story.title])
+            : i18n.__('story_delete_not_possible', [story.title]);
     return [deletable, message];
 };
 
@@ -65,7 +65,7 @@ function Stories(props) {
         const { location: { query } } = router;
         let queriedIds = query['ids[]'] || [];
         queriedIds = Array.isArray(queriedIds) ? queriedIds : [queriedIds];
-        
+
         return queriedIds;
     };
 
@@ -73,7 +73,7 @@ function Stories(props) {
 
     const setActiveStories = (newActiveStories) => {
         if (!getQueryParams().every(id => newActiveStories.includes(id))
-        || !newActiveStories.every(id => getQueryParams().includes(id))) {
+            || !newActiveStories.every(id => getQueryParams().includes(id))) {
             const { location: { pathname } } = router;
             router.replace({ pathname, query: { 'ids[]': newActiveStories.map(cleanId) } });
         }
@@ -103,7 +103,7 @@ function Stories(props) {
             if (storyA.text > storyB.text) return 1;
             return 0;
         });
-    
+
     const injectProjectIdInStory = useCallback(story => ({ ...story, projectId }), [projectId]);
 
     const storiesReshaped = useMemo(reshapeStories, [stories]);
@@ -118,8 +118,8 @@ function Stories(props) {
 
     const handleNewStory = useCallback((story, f) => Meteor.call(
         'stories.insert', {
-            story: '', projectId, branches: [], ...story,
-        },
+        story: '', projectId, branches: [], ...story,
+    },
         wrapMeteorCallback(f),
     ), [projectId]);
 

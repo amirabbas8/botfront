@@ -127,5 +127,20 @@ if (Meteor.isServer) {
                 throw e;
             }
         },
+        'user.updateLang'(lang) {
+            check(lang, String);
+            try {
+                Meteor.users.update(
+                    { _id: this.userId },
+                    {
+                        $set: {
+                            'profile.lang': lang,
+                        },
+                    },
+                );
+            } catch (e) {
+                throw e;
+            }
+        },
     });
 }

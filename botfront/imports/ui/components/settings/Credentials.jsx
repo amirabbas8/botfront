@@ -13,7 +13,7 @@ import ChangesSaved from '../utils/ChangesSaved';
 import SaveButton from '../utils/SaveButton';
 import AceField from '../utils/AceField';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class Credentials extends React.Component {

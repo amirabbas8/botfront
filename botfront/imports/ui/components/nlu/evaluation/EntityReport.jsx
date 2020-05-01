@@ -10,7 +10,7 @@ import { examplePropType } from '../../utils/ExampleUtils';
 import { Info } from '../../utils/Utils';
 import { Metrics } from './KeyMetrics';
 
-import i18n from 'meteor/universe:i18n';
+import { i18n } from 'meteor/universe:i18n';
 
 
 function ExampleTextComparison({ example, prediction }) {
@@ -164,7 +164,7 @@ export default class EntityReport extends React.Component {
         return [
             {
                 id: 'info',
-                accessor: () => {},
+                accessor: () => { },
                 Header: '',
                 Cell: () => (
                     <div>
@@ -282,6 +282,13 @@ export default class EntityReport extends React.Component {
                     <br />
                     <br />
                     <ReactTable
+                        previousText={i18n.__('previous')}
+                        nextText={i18n.__('next')}
+                        loadingText='Loading...'
+                        noDataText='No rows found'
+                        pageText={i18n.__('page')}
+                        ofText={i18n.__('of')}
+                        rowsText={i18n.__('rows')}
                         data={data}
                         columns={this.getEntitiesColumns()}
                         expanded={expanded}

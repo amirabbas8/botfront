@@ -2,7 +2,7 @@ import { Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 class StoryErrorBoundary extends React.Component {
     constructor(props) {

@@ -25,7 +25,7 @@ import {
 } from '../../../../lib/botResponse.utils';
 import { clearTypenameField } from '../../../../lib/client.safe.utils';
 import { Loading } from '../../utils/Utils';
-
+import {i18n} from 'meteor/universe:i18n';
 
 /*
 Bot response Editor requireds one of: botResponse, name, or isNew.
@@ -50,7 +50,7 @@ const BotResponseEditor = (props) => {
     const [createBotResponse] = useMutation(CREATE_BOT_RESPONSE);
     const [updateBotResponse] = useMutation(UPDATE_BOT_RESPONSE);
     const [deleteVariation] = useMutation(DELETE_VARIATION);
-    
+
     const [newBotResponse, setNewBotResponse] = useState(botResponse);
     const [activeTab, setActiveTab] = useState(0);
     const [responseKey, setResponseKey] = useState(name);
@@ -107,13 +107,13 @@ const BotResponseEditor = (props) => {
 
     const handleDeleteVariation = (index) => {
         const activeIndex = newBotResponse.values.findIndex(({ lang }) => lang === language);
-        
+
         const { sequence } = newBotResponse.values[activeIndex];
         const updatedSequence = [
             ...sequence.slice(0, index),
             ...sequence.slice(index + 1),
         ];
-        
+
         const updatedBotResponse = { ...newBotResponse };
         updatedBotResponse.values[activeIndex].sequence = updatedSequence;
         if (isNew) {
@@ -136,7 +136,7 @@ const BotResponseEditor = (props) => {
             );
             return;
         }
-        updateResponse({ ...newBotResponse, metadata: updatedMetadata }, () => {});
+        updateResponse({ ...newBotResponse, metadata: updatedMetadata }, () => { });
     };
 
     const handleChangeKey = async () => {
@@ -166,7 +166,7 @@ const BotResponseEditor = (props) => {
         if (isNew) {
             const tempvar = updateSequence(newBotResponse, content, index);
             setNewBotResponse(tempvar);
-            
+
             return;
         }
         upsertResponse(name, updatedSequence, index);
@@ -195,8 +195,8 @@ const BotResponseEditor = (props) => {
         }
         // the response is new
         if ((isNew && !checkResponseEmpty(validResponse))
-        // the response was one of the default defined one and thus does not really exist in db
-        || (!isNew && validResponse._id === undefined && !checkResponseEmpty(validResponse))) {
+            // the response was one of the default defined one and thus does not really exist in db
+            || (!isNew && validResponse._id === undefined && !checkResponseEmpty(validResponse))) {
             insertResponse(validResponse, (err) => {
                 validateResponseName(err);
                 if (!err) {
@@ -268,8 +268,8 @@ const BotResponseEditor = (props) => {
                     </div>
                     <div className='response-editor-topbar-section'>
                         <Menu pointing secondary activeIndex={activeTab}>
-                            <MenuItem onClick={() => { setActiveTab(0); }} active={activeTab === 0} className='response-variations' data-cy='variations-tab'>Variations</MenuItem>
-                            <MenuItem onClick={() => { setActiveTab(1); }} active={activeTab === 1} className='metadata' data-cy='metadata-tab'>Behaviour</MenuItem>
+                            <MenuItem onClick={() => { setActiveTab(0); }} active={activeTab === 0} className='response-variations' data-cy='variations-tab'>{i18n.__('variations')}</MenuItem>
+                            <MenuItem onClick={() => { setActiveTab(1); }} active={activeTab === 1} className='metadata' data-cy='metadata-tab'>{i18n.__('behavior')}</MenuItem>
                         </Menu>
                     </div>
                     <div className='response-editor-topbar-section' />

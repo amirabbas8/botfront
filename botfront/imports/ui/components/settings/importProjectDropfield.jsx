@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import UploadDropzone from '../utils/UploadDropzone';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const ImportProjectDropfield = ({
@@ -46,7 +46,7 @@ ImportProjectDropfield.defaultProps = {
     manipulateData: data => data,
     maxSizeInMb: 30,
     verifyData: () => true,
-    successMessage: {i18n.__('file_ready')},
+    successMessage: i18n.__('file_ready'),
 };
 
 export default ImportProjectDropfield;

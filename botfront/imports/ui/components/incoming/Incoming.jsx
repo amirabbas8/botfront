@@ -22,7 +22,7 @@ import { setWorkingLanguage } from '../../store/actions/actions';
 import { updateIncomingPath } from './incoming.utils';
 import { WithRefreshOnLoad } from '../../layouts/project';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 class Incoming extends React.Component {

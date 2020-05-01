@@ -13,7 +13,8 @@ import Instances from './Instances';
 import DefaultDomain from './DefaultDomain';
 import ImportExportProject from './ImportExportProject';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
+import UserInfo from './UserInfo';
 
 class Settings extends React.Component {
     constructor(props) {
@@ -45,6 +46,10 @@ class Settings extends React.Component {
     getSettingsPanes = () => {
         const { orchestratorMenuItems, orchestrator } = this.state;
         let panes = [
+            {
+                menuItem: <Menu.Item data-cy='project-settings-menu-info' icon='info' content={i18n.__('user_info')} key='User Info' />,
+                render: () => <Tab.Pane><UserInfo /></Tab.Pane>,
+            },
             {
                 menuItem: <Menu.Item data-cy='project-settings-menu-info' icon='info' content={i18n.__('project_info')} key='Project Info' />,
                 render: () => <Tab.Pane><ProjectInfo /></Tab.Pane>,
@@ -91,7 +96,7 @@ class Settings extends React.Component {
     render() {
         return (
             <>
-                <PageMenu title={i18n.__(Settings)} icon='setting' />
+                <PageMenu title={i18n.__('settings')} icon='setting' />
                 <Container>
                     <Tab menu={{ vertical: true }} grid={{ paneWidth: 12, tabWidth: 4 }} panes={this.getSettingsPanes()} />
                 </Container>

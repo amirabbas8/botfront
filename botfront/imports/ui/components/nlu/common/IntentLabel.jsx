@@ -7,7 +7,7 @@ import { ProjectContext } from '../../../layouts/context';
 import { OOS_LABEL } from '../../constants.json';
 import DataTable from '../../common/DataTable';
 
-import i18n from 'meteor/universe:i18n';
+import {i18n} from 'meteor/universe:i18n';
 
 
 const Intent = React.forwardRef((props, ref) => {
