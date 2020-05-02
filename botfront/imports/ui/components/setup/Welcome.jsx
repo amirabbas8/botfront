@@ -13,6 +13,6 @@ export default () => (
         <br />
         <br />
         <br />
-        <Link to='/setup/account'><Button data-cy='start-setup' size='big' primary content={18n.__('lets_get_started')} /></Link>
+        <Link to='/setup/account'><Button data-cy='start-setup' size='big' primary content={i18n.__('lets_get_started')} /></Link>
     </div>
 );
